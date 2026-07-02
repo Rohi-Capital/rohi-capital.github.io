@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/user/Library/Application Support/Claude/local-agent-mode-sessions/skills-plugin/9e9819b8-43d4-4bdc-a1a0-963aebde4122/144b3de1-6561-4fec-a756-7699efc2739d/skills/docx/**)",
+      "Bash(extract-text \"/Users/user/Downloads/ROHI CAPITAL LIMITED.docx\")",
+      "Bash(pandoc \"/Users/user/Downloads/ROHI CAPITAL LIMITED.docx\" -t markdown)",
+      "Bash(unzip -o -j \"/Users/user/Downloads/ROHI CAPITAL LIMITED.docx\" \"word/media/*\" -d \"/private/tmp/claude-501/-Users-user-Documents-Claude-Rohi-Capital/84bdba48-6d57-4614-a983-067424444adc/scratchpad/docx-media\")",
+      "Bash(textutil -convert txt -stdout \"/Users/user/Downloads/ROHI CAPITAL LIMITED.docx\")",
+      "Bash(ls -lat /Users/user/Downloads | head -30; find /Users/user/Downloads /Users/user/Desktop /Users/user/Documents -maxdepth 3 -iname \"*rohi*\" 2>/dev/null | head -20)",
+      "Bash(python3 -c \"import PIL; print\\('PIL ok', PIL.__version__\\)\")",
+      "Bash(python3 -m pip install --user pillow --quiet)",
+      "Bash(python3)",
+      "Bash(python3 -m pip install --user potracer --quiet)",
+      "Bash(python3 -c \"import potrace; print\\('potracer ok'\\)\")",
+      "Bash(sed -i '' 's|assets/logo-full-white\\\\.png|assets/logo-full-white.svg|g' index.html about.html services.html approach.html contact.html)",
+      "Bash(sed -i '' 's|src=\"assets/logo-full\\\\.png\"|src=\"assets/logo-full.svg\"|g' about.html)"
+    ]
+  }
+}
