@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Approach — Rohi Capital Limited</title>
+  <meta name="description" content="Rohi Capital's investment philosophy and structured investment process — capital preservation first, risk-adjusted returns, research-driven decisions, diversification, and a long-term perspective." />
+  <link rel="icon" type="image/png" href="../assets/logo-mark.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50:'#e6fdf3', 100:'#c3fae2', 300:'#4ff0a9', 400:'#21e893', 500:'#02df82', 600:'#02b96c', 700:'#059257' },
+            ink:   { 950:'#030f0f', 900:'#081714', 800:'#0d2420', 700:'#153730', 600:'#2b544a' },
+          },
+          fontFamily: { display:['Poppins','sans-serif'], body:['Inter','sans-serif'] },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { font-family:'Inter',sans-serif; }
+    .font-display { font-family:'Poppins',sans-serif; }
+    .bg-grid {
+      background-image:
+        linear-gradient(rgba(2,223,130,0.09) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(2,223,130,0.09) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-delay-1 { transition-delay:.1s; } .reveal-delay-2 { transition-delay:.2s; } .reveal-delay-3 { transition-delay:.3s; }
+  </style>
+</head>
+
+<body class="bg-white text-ink-900 antialiased">
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="fixed inset-x-0 top-0 z-50 bg-white/90 backdrop-blur-md border-b border-ink-950/10">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+      <a href="index.html" class="flex items-center">
+        <img src="../assets/logo-full.svg" alt="Rohi Capital Limited" class="h-10 w-auto" />
+      </a>
+      <div class="hidden items-center gap-8 lg:flex">
+        <a href="index.html" class="text-sm font-medium text-ink-950/70 transition hover:text-brand-700">Home</a>
+        <a href="about.html" class="text-sm font-medium text-ink-950/70 transition hover:text-brand-700">About Us</a>
+        <a href="services.html" class="text-sm font-medium text-ink-950/70 transition hover:text-brand-700">Services</a>
+        <a href="approach.html" class="text-sm font-semibold text-brand-700">Our Approach</a>
+        <a href="contact.html" class="text-sm font-medium text-ink-950/70 transition hover:text-brand-700">Contact</a>
+        <a href="contact.html" class="rounded-full bg-brand-500 px-5 py-2.5 text-sm font-semibold text-ink-950 transition hover:bg-brand-400">Book a Consultation</a>
+      </div>
+      <button id="menu-btn" class="lg:hidden text-ink-950" aria-label="Open menu" aria-expanded="false">
+        <svg id="icon-open" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg id="icon-close" class="hidden h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="hidden border-t border-ink-950/10 bg-white/95 backdrop-blur-md lg:hidden">
+      <div class="space-y-1 px-6 py-4">
+        <a href="index.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-ink-950/80 hover:bg-ink-950/5 hover:text-brand-700">Home</a>
+        <a href="about.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-ink-950/80 hover:bg-ink-950/5 hover:text-brand-700">About Us</a>
+        <a href="services.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-ink-950/80 hover:bg-ink-950/5 hover:text-brand-700">Services</a>
+        <a href="approach.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-brand-700">Our Approach</a>
+        <a href="contact.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-ink-950/80 hover:bg-ink-950/5 hover:text-brand-700">Contact</a>
+        <a href="contact.html" class="mt-2 block rounded-full bg-brand-500 px-5 py-2.5 text-center text-sm font-semibold text-ink-950">Book a Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ PAGE HERO ============ -->
+  <section class="relative overflow-hidden bg-brand-50 bg-grid pt-36 pb-20 lg:pt-44 lg:pb-24">
+    <div class="pointer-events-none absolute -top-32 right-0 h-96 w-96 rounded-full bg-brand-500/15 blur-3xl"></div>
+    <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
+      <p class="text-xs font-bold uppercase tracking-[0.25em] text-brand-700">Our Approach</p>
+      <h1 class="font-display mt-4 max-w-3xl text-4xl font-bold leading-tight tracking-tight text-ink-950 sm:text-5xl">
+        Discipline through market cycles
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-600">
+        We believe successful investing is not about chasing trends — it is about maintaining discipline through market cycles. Our philosophy and process make that discipline repeatable.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ PHILOSOPHY ============ -->
+  <section class="bg-white py-24 lg:py-32">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="reveal mx-auto max-w-2xl text-center">
+        <p class="text-xs font-bold uppercase tracking-[0.25em] text-brand-600">Investment Philosophy</p>
+        <h2 class="font-display mt-3 text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">Five principles guide our decisions</h2>
+      </div>
+
+      <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="reveal rounded-2xl border border-ink-950/5 bg-slate-50 p-8 transition hover:border-brand-500/30 hover:bg-white hover:shadow-lg">
+          <span class="font-display text-4xl font-bold text-brand-500/30">01</span>
+          <h3 class="font-display mt-4 text-lg font-semibold text-ink-950">Capital Preservation First</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-ink-600/80">Protecting client capital remains our foremost responsibility.</p>
+        </div>
+        <div class="reveal reveal-delay-1 rounded-2xl border border-ink-950/5 bg-slate-50 p-8 transition hover:border-brand-500/30 hover:bg-white hover:shadow-lg">
+          <span class="font-display text-4xl font-bold text-brand-500/30">02</span>
+          <h3 class="font-display mt-4 text-lg font-semibold text-ink-950">Risk-Adjusted Returns</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-ink-600/80">We pursue returns commensurate with the risks undertaken.</p>
+        </div>
+        <div class="reveal reveal-delay-2 rounded-2xl border border-ink-950/5 bg-slate-50 p-8 transition hover:border-brand-500/30 hover:bg-white hover:shadow-lg">
+          <span class="font-display text-4xl font-bold text-brand-500/30">03</span>
+          <h3 class="font-display mt-4 text-lg font-semibold text-ink-950">Research-Driven Decisions</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-ink-600/80">Every investment decision is informed by rigorous analysis and disciplined evaluation.</p>
+        </div>
+        <div class="reveal rounded-2xl border border-ink-950/5 bg-slate-50 p-8 transition hover:border-brand-500/30 hover:bg-white hover:shadow-lg">
+          <span class="font-display text-4xl font-bold text-brand-500/30">04</span>
+          <h3 class="font-display mt-4 text-lg font-semibold text-ink-950">Diversification</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-ink-600/80">Thoughtful portfolio construction helps manage uncertainty and enhance resilience.</p>
+        </div>
+        <div class="reveal reveal-delay-1 rounded-2xl border border-ink-950/5 bg-slate-50 p-8 transition hover:border-brand-500/30 hover:bg-white hover:shadow-lg">
+          <span class="font-display text-4xl font-bold text-brand-500/30">05</span>
+          <h3 class="font-display mt-4 text-lg font-semibold text-ink-950">Long-Term Perspective</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-ink-600/80">We prioritize sustainable value creation over short-term speculation.</p>
+        </div>
+        <div class="reveal reveal-delay-2 flex items-center rounded-2xl bg-brand-500 p-8">
+          <p class="font-display text-lg font-semibold leading-snug text-ink-950">"Successful investing is not about chasing trends; it is about maintaining <span class="text-brand-700">discipline</span> through market cycles."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section class="relative overflow-hidden bg-brand-50 bg-grid py-24 lg:py-32">
+    <div class="pointer-events-none absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-500/5 blur-3xl"></div>
+    <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="reveal mx-auto max-w-2xl text-center">
+        <p class="text-xs font-bold uppercase tracking-[0.25em] text-brand-700">Investment Process</p>
+        <h2 class="font-display mt-3 text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">A structured approach, in six steps</h2>
+        <p class="mt-4 text-lg text-ink-600">Every mandate follows the same rigorous, repeatable framework.</p>
+      </div>
+
+      <div class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="reveal rounded-2xl border border-ink-950/10 bg-white p-8 backdrop-blur transition hover:border-brand-500/40">
+          <span class="font-display text-4xl font-bold text-brand-500/40">01</span>
+          <h3 class="font-display mt-4 text-lg font-semibold text-ink-950">Understanding the Client</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-ink-600">Defining investment objectives, constraints, liquidity needs, and risk tolerance.</p>
+        </div>
+        <div class="reveal reveal-delay-1 rounded-2xl border border-ink-950/10 bg-white p-8 backdrop-blur transition hover:border-brand-500/40">
+          <span class="font-display text-4xl font-bold text-brand-500/40">02</span>
+          <h3 class="font-display mt-4 text-lg font-semibold text-ink-950">Research &amp; Market Analysis</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-ink-600">Assessing macroeconomic conditions, sector trends, and investment opportunities.</p>
+        </div>
+        <div class="reveal reveal-delay-2 rounded-2xl border border-ink-950/10 bg-white p-8 backdrop-blur transition hover:border-brand-500/40">
+          <span class="font-display text-4xl font-bold text-brand-500/40">03</span>
+          <h3 class="font-display mt-4 text-lg font-semibold text-ink-950">Portfolio Construction</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-ink-600">Designing diversified portfolios aligned with agreed mandates.</p>
+        </div>
+        <div class="reveal rounded-2xl border border-ink-950/10 bg-white p-8 backdrop-blur transition hover:border-brand-500/40">
+          <span class="font-display text-4xl font-bold text-brand-500/40">04</span>
+          <h3 class="font-display mt-4 text-lg font-semibold text-ink-950">Risk Assessment</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-ink-600">Evaluating market, liquidity, operational, and concentration risks.</p>
+        </div>
+        <div class="reveal reveal-delay-1 rounded-2xl border border-ink-950/10 bg-white p-8 backdrop-blur transition hover:border-brand-500/40">
+          <span class="font-display text-4xl font-bold text-brand-500/40">05</span>
+          <h3 class="font-display mt-4 text-lg font-semibold text-ink-950">Execution</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-ink-600">Implementing investment strategies efficiently and transparently.</p>
+        </div>
+        <div class="reveal reveal-delay-2 rounded-2xl border border-ink-950/10 bg-white p-8 backdrop-blur transition hover:border-brand-500/40">
+          <span class="font-display text-4xl font-bold text-brand-500/40">06</span>
+          <h3 class="font-display mt-4 text-lg font-semibold text-ink-950">Monitoring &amp; Reporting</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-ink-600">Continuous oversight, performance measurement, and periodic reporting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GOVERNANCE NOTE ============ -->
+  <section class="bg-slate-50 py-20 lg:py-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="reveal grid items-center gap-10 rounded-3xl border border-ink-950/5 bg-white p-10 shadow-sm lg:grid-cols-[1fr,auto]">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.25em] text-brand-600">Risk, Governed</p>
+          <h2 class="font-display mt-3 text-2xl font-bold tracking-tight text-ink-950 sm:text-3xl">Risk management is integrated into everything we do</h2>
+          <p class="mt-4 max-w-2xl text-base leading-relaxed text-ink-600/90">
+            Our approach is supported by robust governance standards — clearly defined responsibilities, internal controls, and independent oversight mechanisms — so discipline is enforced by structure, not just intention.
+          </p>
+        </div>
+        <a href="about.html#governance" class="group inline-flex items-center gap-2 rounded-full bg-brand-600 px-7 py-3.5 text-sm font-semibold text-ink-950 transition hover:bg-brand-700">
+          Governance &amp; Compliance
+          <svg class="h-4 w-4 transition group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 6l6 6-6 6M5 12h14"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="relative overflow-hidden bg-brand-50 bg-grid py-20 lg:py-24">
+    <div class="pointer-events-none absolute -top-24 left-1/3 h-96 w-96 rounded-full bg-brand-500/10 blur-3xl"></div>
+    <div class="relative mx-auto max-w-4xl px-6 text-center lg:px-8">
+      <h2 class="font-display text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">Experience disciplined investing</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-ink-600">Start with a conversation. We'll listen first — then show you how our process would apply to your goals.</p>
+      <a href="contact.html" class="mt-8 inline-block rounded-full bg-brand-500 px-8 py-3.5 text-sm font-semibold text-ink-950 shadow-lg shadow-brand-500/25 transition hover:bg-brand-400">Book a Consultation</a>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="border-t border-ink-950/10 bg-brand-50">
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+      <div class="grid gap-12 lg:grid-cols-4">
+        <div class="lg:col-span-2">
+          <a href="index.html"><img src="../assets/logo-full.svg" alt="Rohi Capital Limited" class="h-11 w-auto" /></a>
+          <p class="mt-5 max-w-sm text-sm leading-relaxed text-ink-600">
+            An investment and asset management company providing innovative, disciplined, and client-focused investment solutions — built on integrity, prudent stewardship, and long-term thinking.
+          </p>
+          <a href="https://www.linkedin.com/in/rohi-capital" target="_blank" rel="noopener" class="mt-6 inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink-950/10 text-ink-600 transition hover:border-brand-500/60 hover:text-brand-700" aria-label="LinkedIn">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 013.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          </a>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-ink-950/50">Company</p>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li><a href="about.html" class="text-ink-600 transition hover:text-brand-700">About Us</a></li>
+            <li><a href="approach.html" class="text-ink-600 transition hover:text-brand-700">Our Approach</a></li>
+            <li><a href="about.html#governance" class="text-ink-600 transition hover:text-brand-700">Governance &amp; Compliance</a></li>
+            <li><a href="contact.html" class="text-ink-600 transition hover:text-brand-700">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-ink-950/50">Services</p>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li><a href="services.html#portfolio-management" class="text-ink-600 transition hover:text-brand-700">Portfolio Management</a></li>
+            <li><a href="services.html#fixed-income" class="text-ink-600 transition hover:text-brand-700">Fixed Income Investments</a></li>
+            <li><a href="services.html#wealth-management" class="text-ink-600 transition hover:text-brand-700">Wealth Management</a></li>
+            <li><a href="services.html#collective-schemes" class="text-ink-600 transition hover:text-brand-700">Collective Investment Schemes</a></li>
+            <li><a href="services.html#treasury" class="text-ink-600 transition hover:text-brand-700">Treasury &amp; Liquidity</a></li>
+            <li><a href="services.html#advisory" class="text-ink-600 transition hover:text-brand-700">Investment Advisory</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-14 border-t border-ink-950/10 pt-8">
+        <p class="text-xs leading-relaxed text-ink-950/40">
+          Investment involves risk, including the possible loss of principal. Past performance is not indicative of future results. Services are offered subject to obtaining and maintaining all required regulatory approvals. This website is for informational purposes only and does not constitute an offer or solicitation to buy or sell any security.
+        </p>
+        <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
+          <p class="text-xs text-ink-950/50">© 2026 Rohi Capital Limited. All rights reserved.</p>
+          <div class="flex gap-6 text-xs">
+            <a href="mailto:info@rohi-capital.com" class="text-ink-950/50 transition hover:text-brand-700">info@rohi-capital.com</a>
+            <a href="https://www.rohi-capital.com" class="text-ink-950/50 transition hover:text-brand-700">www.rohi-capital.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+</body>
+</html>
