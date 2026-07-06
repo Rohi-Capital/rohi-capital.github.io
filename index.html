@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rohi Capital Limited — Building Wealth. Preserving Legacies.</title>
-  <meta name="description" content="Rohi Capital Limited is an investment and asset management company providing innovative, disciplined, and client-focused investment solutions to individuals, businesses, and institutions." />
+  <meta name="description" content="Rohi Capital Limited is an investment and asset management company providing innovative, disciplined, and client-focused investment solutions." />
   <link rel="icon" type="image/png" href="assets/logo-mark.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,315 +28,439 @@
   <style>
     body { font-family:'Inter',sans-serif; }
     .font-display { font-family:'Poppins',sans-serif; }
-    .bg-grid {
-      background-image:
-        linear-gradient(rgba(2,223,130,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(2,223,130,0.05) 1px, transparent 1px);
-      background-size: 48px 48px;
-    }
     .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
     .reveal.visible { opacity:1; transform:translateY(0); }
     .reveal-delay-1 { transition-delay:.1s; } .reveal-delay-2 { transition-delay:.2s; } .reveal-delay-3 { transition-delay:.3s; }
-    .chart-line { stroke-dasharray:1000; stroke-dashoffset:1000; animation:draw 2.4s ease forwards .4s; }
-    @keyframes draw { to { stroke-dashoffset:0; } }
+  
+    /* Option D motion layer */
+    .glow-card { transition: border-color .35s ease, box-shadow .35s ease, transform .35s ease; }
+    .glow-card:hover { border-color: rgba(2,223,130,.55) !important; box-shadow: 0 0 0 1px rgba(2,223,130,.28), 0 16px 44px -16px rgba(2,223,130,.45); }
+    .draw-line { stroke-dasharray: 1300; stroke-dashoffset: 1300; }
+    .chart-on .draw-line { animation: drawline 2.2s ease forwards .2s; }
+    @keyframes drawline { to { stroke-dashoffset: 0; } }
+    .chart-area { opacity: 0; }
+    .chart-on .chart-area { animation: fadein 1.2s ease forwards 1.3s; }
+    .chart-dot { opacity: 0; }
+    .chart-on .chart-dot { animation: fadein .4s ease forwards 2.2s; }
+    @keyframes fadein { to { opacity: 1; } }
+    .bar { transform: scaleY(0); transform-origin: bottom; transition: transform .9s cubic-bezier(.22,.9,.35,1); }
+    .chart-on .bar { transform: scaleY(1); }
+    .donut-arc { stroke-dasharray: 0 400; transition: stroke-dasharray 1.6s ease .2s; }
   </style>
 </head>
 
-<body class="bg-white text-ink-900 antialiased">
+<body class="bg-white text-ink-950 antialiased">
+
+  <!-- ============ TOPBAR ============ -->
+  <div class="bg-ink-950 text-xs text-white/70">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-2 lg:px-8">
+      <p class="hidden font-medium tracking-wide sm:block">Building Wealth. Preserving Legacies. Creating Enduring Value.</p>
+      <div class="flex items-center gap-6">
+        <a href="mailto:hello@rohi-capital.com" class="flex items-center gap-1.5 transition hover:text-brand-400">
+          <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.9 5.3a2 2 0 002.2 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          hello@rohi-capital.com
+        </a>
+        <a href="https://www.linkedin.com/in/rohi-capital" target="_blank" rel="noopener" class="flex items-center gap-1.5 transition hover:text-brand-400">
+          <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 013.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- ============ NAVBAR ============ -->
-  <header class="fixed inset-x-0 top-0 z-50 bg-ink-950/85 backdrop-blur-md border-b border-white/5">
+  <header class="sticky top-0 z-50 bg-white/95 shadow-sm backdrop-blur-md">
     <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-      <a href="index.html" class="flex items-center">
-        <img src="assets/logo-full-white.svg" alt="Rohi Capital Limited" class="h-10 w-auto" />
-      </a>
+      <a href="index.html"><img src="assets/logo-full.svg" alt="Rohi Capital Limited" class="h-10 w-auto" /></a>
       <div class="hidden items-center gap-8 lg:flex">
-        <a href="index.html" class="text-sm font-semibold text-brand-400">Home</a>
-        <a href="about.html" class="text-sm font-medium text-white/70 transition hover:text-brand-400">About Us</a>
-        <a href="services.html" class="text-sm font-medium text-white/70 transition hover:text-brand-400">Services</a>
-        <a href="approach.html" class="text-sm font-medium text-white/70 transition hover:text-brand-400">Our Approach</a>
-        <a href="contact.html" class="text-sm font-medium text-white/70 transition hover:text-brand-400">Contact</a>
-        <a href="contact.html" class="rounded-full bg-brand-500 px-5 py-2.5 text-sm font-semibold text-ink-950 transition hover:bg-brand-400">Book a Consultation</a>
+        <a href="index.html" class="text-sm font-semibold text-brand-700">Home</a>
+        <a href="about.html" class="text-sm font-medium text-ink-950/70 transition hover:text-brand-700">About Us</a>
+        <a href="services.html" class="text-sm font-medium text-ink-950/70 transition hover:text-brand-700">Services</a>
+        <a href="approach.html" class="text-sm font-medium text-ink-950/70 transition hover:text-brand-700">Our Approach</a>
+        <a href="contact.html" class="text-sm font-medium text-ink-950/70 transition hover:text-brand-700">Contact</a>
+        <a href="contact.html" class="rounded-lg bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700">Book a Consultation</a>
       </div>
-      <button id="menu-btn" class="lg:hidden text-white" aria-label="Open menu" aria-expanded="false">
+      <button id="menu-btn" class="lg:hidden text-ink-950" aria-label="Open menu" aria-expanded="false">
         <svg id="icon-open" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
         <svg id="icon-close" class="hidden h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </nav>
-    <div id="mobile-menu" class="hidden border-t border-white/10 bg-ink-950/95 backdrop-blur-md lg:hidden">
+    <div id="mobile-menu" class="hidden border-t border-ink-950/10 bg-white lg:hidden">
       <div class="space-y-1 px-6 py-4">
-        <a href="index.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-brand-400">Home</a>
-        <a href="about.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/80 hover:bg-white/5 hover:text-brand-400">About Us</a>
-        <a href="services.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/80 hover:bg-white/5 hover:text-brand-400">Services</a>
-        <a href="approach.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/80 hover:bg-white/5 hover:text-brand-400">Our Approach</a>
-        <a href="contact.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/80 hover:bg-white/5 hover:text-brand-400">Contact</a>
-        <a href="contact.html" class="mt-2 block rounded-full bg-brand-500 px-5 py-2.5 text-center text-sm font-semibold text-ink-950">Book a Consultation</a>
+        <a href="index.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-brand-700">Home</a>
+        <a href="about.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-ink-950/80 hover:bg-ink-950/5">About Us</a>
+        <a href="services.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-ink-950/80 hover:bg-ink-950/5">Services</a>
+        <a href="approach.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-ink-950/80 hover:bg-ink-950/5">Our Approach</a>
+        <a href="contact.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-ink-950/80 hover:bg-ink-950/5">Contact</a>
+        <a href="contact.html" class="mt-2 block rounded-lg bg-brand-600 px-6 py-3 text-center text-sm font-semibold text-white">Book a Consultation</a>
       </div>
     </div>
   </header>
 
   <!-- ============ HERO ============ -->
-  <section class="relative overflow-hidden bg-ink-950 bg-grid pt-32 pb-20 lg:pt-44 lg:pb-32">
-    <div class="pointer-events-none absolute -top-32 right-0 h-96 w-96 rounded-full bg-brand-500/15 blur-3xl"></div>
-    <div class="pointer-events-none absolute bottom-0 -left-32 h-96 w-96 rounded-full bg-brand-500/10 blur-3xl"></div>
-
-    <div class="relative mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-2 lg:px-8">
+  <section class="relative">
+    <div class="absolute inset-0">
+      <img src="assets/img/hero-team.jpg" alt="Rohi Capital investment professionals in a strategy meeting" class="h-full w-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-r from-ink-950/95 via-ink-950/80 to-ink-950/40"></div>
+    </div>
+    <div class="relative mx-auto grid max-w-7xl items-center gap-14 px-6 pt-28 pb-40 lg:grid-cols-2 lg:px-8 lg:pt-36 lg:pb-52">
       <div>
-        <span class="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand-400">
-          <span class="h-1.5 w-1.5 rounded-full bg-brand-500"></span>
+        <p class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] text-brand-400">
+          <span class="h-px w-10 bg-brand-500"></span>
           Investment &amp; Asset Management
-        </span>
-        <h1 class="font-display mt-6 text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
-          Building Wealth.<br/>
-          Preserving Legacies.<br/>
-          <span class="text-brand-500">Creating Enduring Value.</span>
-        </h1>
-        <p class="mt-6 max-w-xl text-lg leading-relaxed text-white/60">
-          Rohi Capital Limited provides innovative, disciplined, and client-focused investment solutions to individuals, businesses, institutions, and sophisticated investors — combining local market expertise with global investment principles.
         </p>
-        <div class="mt-9 flex flex-wrap items-center gap-4">
-          <a href="services.html" class="rounded-full bg-brand-500 px-7 py-3.5 text-sm font-semibold text-ink-950 shadow-lg shadow-brand-500/25 transition hover:bg-brand-400">
-            Explore Our Services
-          </a>
-          <a href="approach.html" class="group inline-flex items-center gap-2 rounded-full border border-white/15 px-7 py-3.5 text-sm font-semibold text-white transition hover:border-brand-500/60 hover:text-brand-400">
-            How We Invest
-            <svg class="h-4 w-4 transition group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 6l6 6-6 6M5 12h14"/></svg>
-          </a>
+        <h1 class="font-display mt-6 max-w-2xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
+          Building Wealth. Preserving Legacies. <span class="text-brand-400">Creating Enduring Value.</span>
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-white/75">
+          Rohi Capital Limited provides innovative, disciplined, and client-focused investment solutions to individuals, businesses, institutions, and sophisticated investors.
+        </p>
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+          <a href="services.html" class="rounded-lg bg-brand-600 px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-brand-600/30 transition hover:bg-brand-700">Explore Our Services</a>
+          <a href="about.html" class="rounded-lg border border-white/30 bg-white/5 px-8 py-4 text-sm font-semibold text-white backdrop-blur transition hover:border-brand-400 hover:text-brand-400">Who We Are</a>
         </div>
-
-        <dl class="mt-14 grid grid-cols-3 gap-6 border-t border-white/10 pt-8">
-          <div>
-            <dt class="text-xs font-medium uppercase tracking-wider text-white/40">Foremost Principle</dt>
-            <dd class="font-display mt-1 text-lg font-bold text-white">Capital Preservation First</dd>
-          </div>
-          <div>
-            <dt class="text-xs font-medium uppercase tracking-wider text-white/40">Our Standard</dt>
-            <dd class="font-display mt-1 text-lg font-bold text-white">Institutional Governance</dd>
-          </div>
-          <div>
-            <dt class="text-xs font-medium uppercase tracking-wider text-white/40">Our Horizon</dt>
-            <dd class="font-display mt-1 text-lg font-bold text-white">Generations, Not Quarters</dd>
-          </div>
-        </dl>
       </div>
 
-      <!-- Visual -->
-      <div class="relative hidden lg:block">
-        <div class="rounded-3xl border border-white/10 bg-ink-800/70 p-8 shadow-2xl backdrop-blur">
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-xs font-medium uppercase tracking-wider text-white/40">Illustrative Diversified Portfolio</p>
-              <p class="font-display mt-1 text-2xl font-bold text-white">Discipline through market cycles</p>
-            </div>
-            <img src="assets/logo-mark.png" alt="" class="h-10 w-auto" />
-          </div>
-          <svg viewBox="0 0 480 220" class="mt-6 w-full" fill="none" aria-hidden="true">
-            <defs>
-              <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#02df82" stop-opacity="0.35"/>
-                <stop offset="100%" stop-color="#02df82" stop-opacity="0"/>
-              </linearGradient>
-            </defs>
-            <g stroke="rgba(255,255,255,0.06)"><line x1="0" y1="55" x2="480" y2="55"/><line x1="0" y1="110" x2="480" y2="110"/><line x1="0" y1="165" x2="480" y2="165"/></g>
-            <path d="M0 180 C60 170 80 150 130 148 C180 146 200 110 260 105 C320 100 340 70 400 55 C430 48 460 30 480 22 L480 220 L0 220 Z" fill="url(#areaFill)"/>
-            <path class="chart-line" d="M0 180 C60 170 80 150 130 148 C180 146 200 110 260 105 C320 100 340 70 400 55 C430 48 460 30 480 22" stroke="#02df82" stroke-width="3" stroke-linecap="round"/>
-            <circle cx="480" cy="22" r="5" fill="#02df82"/>
-          </svg>
-          <div class="mt-6 grid grid-cols-3 gap-4">
-            <div class="rounded-xl bg-white/5 p-4"><p class="text-xs text-white/40">Fixed Income</p><p class="font-display mt-1 font-semibold text-white">Stability</p></div>
-            <div class="rounded-xl bg-white/5 p-4"><p class="text-xs text-white/40">Diversification</p><p class="font-display mt-1 font-semibold text-white">Resilience</p></div>
-            <div class="rounded-xl bg-white/5 p-4"><p class="text-xs text-white/40">Long Term</p><p class="font-display mt-1 font-semibold text-white">Growth</p></div>
-          </div>
+      <!-- Animated growth chart card -->
+      <div class="chart-block glow-card hidden rounded-xl border border-white/15 bg-white/10 p-7 shadow-2xl backdrop-blur-md lg:block">
+        <div class="flex items-center justify-between">
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-white/60">Illustrative Growth Trajectory</p>
+          <img src="assets/logo-mark.png" alt="" class="h-8 w-auto" />
         </div>
-        <div class="absolute -bottom-6 -left-8 flex items-center gap-3 rounded-2xl border border-white/10 bg-ink-800 px-5 py-4 shadow-xl">
-          <div class="flex h-10 w-10 items-center justify-center rounded-full bg-brand-500/15">
-            <svg class="h-5 w-5 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.6 2a9.6 9.6 0 11-19.2 0 9.6 9.6 0 0119.2 0z"/></svg>
-          </div>
-          <div>
-            <p class="text-sm font-semibold text-white">Capital Preservation First</p>
-            <p class="text-xs text-white/50">Protecting client capital is our foremost responsibility</p>
-          </div>
+        <svg viewBox="0 0 460 210" fill="none" class="mt-5 w-full" aria-hidden="true">
+          <defs>
+            <linearGradient id="gfill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#02df82" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#02df82" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <g stroke="rgba(255,255,255,0.12)"><line x1="0" y1="52" x2="460" y2="52"/><line x1="0" y1="104" x2="460" y2="104"/><line x1="0" y1="156" x2="460" y2="156"/></g>
+          <path class="chart-area" d="M0 175 C55 168 75 150 120 146 C170 141 190 112 250 104 C305 97 330 68 385 52 C415 43 440 30 460 22 L460 210 L0 210 Z" fill="url(#gfill)"/>
+          <path class="draw-line" d="M0 175 C55 168 75 150 120 146 C170 141 190 112 250 104 C305 97 330 68 385 52 C415 43 440 30 460 22" stroke="#02df82" stroke-width="3" stroke-linecap="round"/>
+          <circle class="chart-dot" cx="460" cy="22" r="5" fill="#02df82"/>
+        </svg>
+        <div class="mt-6 grid grid-cols-4 gap-3 border-t border-white/10 pt-5 text-center">
+          <div><p class="font-display text-2xl font-bold text-white"><span class="counter" data-target="5">0</span></p><p class="mt-0.5 text-[11px] leading-tight text-white/50">Guiding Principles</p></div>
+          <div><p class="font-display text-2xl font-bold text-white"><span class="counter" data-target="6">0</span></p><p class="mt-0.5 text-[11px] leading-tight text-white/50">Step Process</p></div>
+          <div><p class="font-display text-2xl font-bold text-white"><span class="counter" data-target="8">0</span></p><p class="mt-0.5 text-[11px] leading-tight text-white/50">Instrument Classes</p></div>
+          <div><p class="font-display text-2xl font-bold text-white"><span class="counter" data-target="4">0</span></p><p class="mt-0.5 text-[11px] leading-tight text-white/50">Investor Segments</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ PURPOSE STRIP ============ -->
-  <section class="border-b border-ink-950/5 bg-white">
-    <div class="mx-auto max-w-4xl px-6 py-14 text-center lg:px-8">
-      <p class="text-xs font-bold uppercase tracking-[0.25em] text-brand-600">Our Purpose</p>
-      <p class="font-display mt-4 text-2xl font-semibold leading-snug text-ink-950 sm:text-3xl">
-        "To transform savings into prosperity and investments into lasting legacies."
+  <!-- ============ PRINCIPLE CARDS (overlap) ============ -->
+  <section class="relative z-10 mx-auto -mt-20 max-w-7xl px-6 lg:px-8">
+    <div class="grid gap-5 md:grid-cols-3">
+      <div class="reveal rounded-xl border-t-4 border-brand-500 bg-white p-8 shadow-xl">
+        <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-500/10 text-brand-600">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.6 2c0 5-3.8 9.7-8.6 10.8C7.2 21.7 3.4 17 3.4 12V6.4L12 3l8.6 3.4V12z"/></svg>
+        </div>
+        <h3 class="font-display mt-5 text-lg font-semibold">Capital Preservation First</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">Protecting client capital remains our foremost responsibility — in every mandate, through every market cycle.</p>
+      </div>
+      <div class="reveal reveal-delay-1 rounded-xl border-t-4 border-brand-500 bg-white p-8 shadow-xl">
+        <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-500/10 text-brand-600">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.7 14.2L12 12m0 0l2.3-2.3M12 12l-2.3-2.3M12 12l2.3 2.3M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="font-display mt-5 text-lg font-semibold">Research-Driven Decisions</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">Every investment decision is informed by rigorous analysis, market intelligence, and disciplined evaluation.</p>
+      </div>
+      <div class="reveal reveal-delay-2 rounded-xl border-t-4 border-brand-500 bg-white p-8 shadow-xl">
+        <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-500/10 text-brand-600">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="font-display mt-5 text-lg font-semibold">Long-Term Perspective</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">We prioritize sustainable value creation over short-term speculation — building for generations, not quarters.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GROWTH TRAJECTORY (motion infographics) ============ -->
+  <section class="mx-auto max-w-7xl px-6 pt-24 lg:px-8 lg:pt-28">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <p class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] text-brand-700">
+        <span class="h-px w-10 bg-brand-600"></span>
+        Growth Trajectory
+        <span class="h-px w-10 bg-brand-600"></span>
       </p>
+      <h2 class="font-display mt-5 text-3xl font-bold tracking-tight sm:text-4xl">How disciplined capital grows</h2>
+      <p class="mt-4 text-lg text-ink-600">Three habits our process is engineered around — consistency, diversification, and staying the course.</p>
+    </div>
+
+    <div class="mt-14 grid gap-6 lg:grid-cols-3">
+      <!-- 1. Bars: consistency compounds -->
+      <div class="chart-block reveal rounded-xl border border-ink-950/10 bg-white p-8 shadow-sm">
+        <div class="flex h-40 items-end gap-2.5" aria-hidden="true">
+          <div class="bar flex-1 rounded-t-md bg-gradient-to-t from-brand-600 to-brand-400" style="height:26%; transition-delay:.05s"></div>
+          <div class="bar flex-1 rounded-t-md bg-gradient-to-t from-brand-600 to-brand-400" style="height:36%; transition-delay:.12s"></div>
+          <div class="bar flex-1 rounded-t-md bg-gradient-to-t from-brand-600 to-brand-400" style="height:44%; transition-delay:.19s"></div>
+          <div class="bar flex-1 rounded-t-md bg-gradient-to-t from-brand-600 to-brand-400" style="height:55%; transition-delay:.26s"></div>
+          <div class="bar flex-1 rounded-t-md bg-gradient-to-t from-brand-600 to-brand-400" style="height:66%; transition-delay:.33s"></div>
+          <div class="bar flex-1 rounded-t-md bg-gradient-to-t from-brand-600 to-brand-400" style="height:80%; transition-delay:.40s"></div>
+          <div class="bar flex-1 rounded-t-md bg-gradient-to-t from-brand-600 to-brand-400" style="height:96%; transition-delay:.47s"></div>
+        </div>
+        <h3 class="font-display mt-6 text-lg font-semibold">Consistency compounds</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">Steady, disciplined contributions build momentum that market timing rarely matches.</p>
+      </div>
+
+      <!-- 2. Donut: diversified by design -->
+      <div class="chart-block reveal reveal-delay-1 rounded-xl border border-ink-950/10 bg-white p-8 shadow-sm">
+        <div class="flex h-40 items-center justify-center gap-8">
+          <svg viewBox="0 0 140 140" class="h-36 w-36 -rotate-90" aria-hidden="true">
+            <circle cx="70" cy="70" r="54" fill="none" stroke="#eef2f1" stroke-width="18"/>
+            <circle class="donut-arc" data-dash="169.6 339.3" cx="70" cy="70" r="54" fill="none" stroke="#02b96c" stroke-width="18" stroke-dashoffset="0"/>
+            <circle class="donut-arc" data-dash="101.8 339.3" cx="70" cy="70" r="54" fill="none" stroke="#02df82" stroke-width="18" stroke-dashoffset="-169.6"/>
+            <circle class="donut-arc" data-dash="67.9 339.3" cx="70" cy="70" r="54" fill="none" stroke="#4ff0a9" stroke-width="18" stroke-dashoffset="-271.4"/>
+          </svg>
+          <ul class="space-y-2 text-xs font-medium text-ink-600">
+            <li class="flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-sm bg-brand-600"></span>Fixed income</li>
+            <li class="flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-sm bg-brand-500"></span>Growth assets</li>
+            <li class="flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-sm bg-brand-300"></span>Liquidity</li>
+          </ul>
+        </div>
+        <h3 class="font-display mt-6 text-lg font-semibold">Diversified by design</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">Thoughtful allocation across asset classes manages uncertainty and builds resilience.</p>
+      </div>
+
+      <!-- 3. Line: discipline vs noise -->
+      <div class="chart-block reveal reveal-delay-2 rounded-xl border border-ink-950/10 bg-white p-8 shadow-sm">
+        <svg viewBox="0 0 300 160" fill="none" class="h-40 w-full" aria-hidden="true">
+          <g stroke="rgba(3,15,15,0.07)"><line x1="0" y1="40" x2="300" y2="40"/><line x1="0" y1="80" x2="300" y2="80"/><line x1="0" y1="120" x2="300" y2="120"/></g>
+          <path class="draw-line" d="M0 138 L25 118 L45 132 L70 96 L95 116 L120 74 L145 94 L170 60 L195 84 L220 48 L245 66 L270 34 L300 44" stroke="#9fb4ad" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class="draw-line" d="M0 142 C60 130 90 110 150 88 C210 66 250 44 300 24" stroke="#02df82" stroke-width="3.5" stroke-linecap="round"/>
+          <circle class="chart-dot" cx="300" cy="24" r="5" fill="#02df82"/>
+        </svg>
+        <h3 class="font-display mt-6 text-lg font-semibold">Discipline over noise</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">Markets swing; process holds. We stay the course through cycles rather than chasing trends.</p>
+      </div>
+    </div>
+    <p class="reveal mt-6 text-center text-xs text-ink-950/40">Charts are illustrative of our investment philosophy only — not projections or guarantees of returns.</p>
+  </section>
+
+  <!-- ============ WHO WE ARE ============ -->
+  <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+    <div class="grid items-center gap-14 lg:grid-cols-2">
+      <div class="reveal relative">
+        <img src="assets/img/meeting.jpg" alt="Rohi Capital team in a client strategy session" class="w-full rounded-2xl object-cover shadow-lg" />
+        <div class="absolute -bottom-6 -right-6 hidden rounded-xl bg-brand-600 p-6 text-white shadow-xl sm:block">
+          <p class="font-display text-lg font-bold leading-tight">Rooted in integrity.<br/>Built for generations.</p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <p class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] text-brand-700">
+          <span class="h-px w-10 bg-brand-600"></span>
+          Who We Are
+        </p>
+        <h2 class="font-display mt-5 text-3xl font-bold tracking-tight sm:text-4xl">A modern asset manager with a fiduciary heart</h2>
+        <p class="mt-5 text-lg leading-relaxed text-ink-600">
+          Rohi Capital is founded on the belief that wealth creation should be guided by integrity, prudent stewardship, and long-term thinking. We combine local market expertise with global investment principles.
+        </p>
+        <ul class="mt-7 space-y-3.5">
+          <li class="flex items-start gap-3">
+            <svg class="mt-0.5 h-5 w-5 flex-none text-brand-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-9.3a1 1 0 00-1.4-1.4L9 10.6 7.7 9.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z" clip-rule="evenodd"/></svg>
+            <span class="text-ink-600"><strong class="font-semibold text-ink-950">Trusted stewardship</strong> — we recognize the responsibility of managing our clients' wealth.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="mt-0.5 h-5 w-5 flex-none text-brand-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-9.3a1 1 0 00-1.4-1.4L9 10.6 7.7 9.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z" clip-rule="evenodd"/></svg>
+            <span class="text-ink-600"><strong class="font-semibold text-ink-950">Institutional standards</strong> — governance and controls designed for sustainable growth.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="mt-0.5 h-5 w-5 flex-none text-brand-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-9.3a1 1 0 00-1.4-1.4L9 10.6 7.7 9.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z" clip-rule="evenodd"/></svg>
+            <span class="text-ink-600"><strong class="font-semibold text-ink-950">Client-centric solutions</strong> — every strategy begins with understanding you.</span>
+          </li>
+        </ul>
+        <a href="about.html" class="mt-9 inline-flex items-center gap-2 rounded-lg bg-ink-950 px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-700">
+          More About Us
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 6l6 6-6 6M5 12h14"/></svg>
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- ============ SERVICES OVERVIEW ============ -->
-  <section class="bg-slate-50 py-24 lg:py-32">
+  <!-- ============ SERVICES ============ -->
+  <section class="bg-slate-50 py-20 lg:py-28">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="reveal mx-auto max-w-2xl text-center">
-        <p class="text-xs font-bold uppercase tracking-[0.25em] text-brand-600">Our Services</p>
-        <h2 class="font-display mt-3 text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">Investment solutions built around you</h2>
-        <p class="mt-4 text-lg text-ink-600/80">Customized strategies designed around your investment objectives, liquidity needs, and risk appetite.</p>
+        <p class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] text-brand-700">
+          <span class="h-px w-10 bg-brand-600"></span>
+          Our Services
+          <span class="h-px w-10 bg-brand-600"></span>
+        </p>
+        <h2 class="font-display mt-5 text-3xl font-bold tracking-tight sm:text-4xl">Investment solutions built around you</h2>
+        <p class="mt-4 text-lg text-ink-600">Customized strategies designed around your objectives, liquidity needs, and risk appetite.</p>
       </div>
 
-      <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <a href="services.html#portfolio-management" class="reveal group rounded-2xl border border-ink-950/5 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/10">
-          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10 text-brand-600 transition group-hover:bg-brand-500 group-hover:text-ink-950">
+      <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <a href="services.html#portfolio-management" class="reveal group rounded-xl border border-ink-950/5 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:border-brand-500/40 hover:shadow-lg">
+          <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-500/10 text-brand-600 transition group-hover:bg-brand-600 group-hover:text-white">
             <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 17l6-6 4 4 8-8m0 0h-5m5 0v5"/></svg>
           </div>
-          <h3 class="font-display mt-6 text-lg font-semibold text-ink-950 group-hover:text-brand-700">Portfolio Management</h3>
-          <p class="mt-2.5 text-sm leading-relaxed text-ink-600/80">Customized discretionary and advisory portfolio management designed around your objectives, liquidity needs, and risk appetite.</p>
+          <h3 class="font-display mt-5 text-lg font-semibold group-hover:text-brand-700">Portfolio Management</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-600">Discretionary and advisory portfolios designed around your objectives and risk appetite.</p>
+          <p class="mt-4 text-sm font-semibold text-brand-700">Learn more <span class="inline-block transition group-hover:translate-x-1">→</span></p>
         </a>
-        <a href="services.html#fixed-income" class="reveal reveal-delay-1 group rounded-2xl border border-ink-950/5 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/10">
-          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10 text-brand-600 transition group-hover:bg-brand-500 group-hover:text-ink-950">
+        <a href="services.html#fixed-income" class="reveal reveal-delay-1 group rounded-xl border border-ink-950/5 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:border-brand-500/40 hover:shadow-lg">
+          <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-500/10 text-brand-600 transition group-hover:bg-brand-600 group-hover:text-white">
             <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.6 2c0 5-3.8 9.7-8.6 10.8C7.2 21.7 3.4 17 3.4 12V6.4L12 3l8.6 3.4V12z"/></svg>
           </div>
-          <h3 class="font-display mt-6 text-lg font-semibold text-ink-950 group-hover:text-brand-700">Fixed Income Investments</h3>
-          <p class="mt-2.5 text-sm leading-relaxed text-ink-600/80">Professionally managed fixed-income strategies focused on capital preservation and stable income generation.</p>
+          <h3 class="font-display mt-5 text-lg font-semibold group-hover:text-brand-700">Fixed Income Investments</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-600">Capital preservation and stable income — bonds, treasury bills, Sukuk, and money markets.</p>
+          <p class="mt-4 text-sm font-semibold text-brand-700">Learn more <span class="inline-block transition group-hover:translate-x-1">→</span></p>
         </a>
-        <a href="services.html#wealth-management" class="reveal reveal-delay-2 group rounded-2xl border border-ink-950/5 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/10">
-          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10 text-brand-600 transition group-hover:bg-brand-500 group-hover:text-ink-950">
+        <a href="services.html#wealth-management" class="reveal reveal-delay-2 group rounded-xl border border-ink-950/5 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:border-brand-500/40 hover:shadow-lg">
+          <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-500/10 text-brand-600 transition group-hover:bg-brand-600 group-hover:text-white">
             <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-2.2 0-4 1-4 2.5S9.8 13 12 13s4 1 4 2.5-1.8 2.5-4 2.5m0-10c1.5 0 2.8.5 3.5 1.2M12 8V6m0 12v-2m0 2c-1.5 0-2.8-.5-3.5-1.2M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           </div>
-          <h3 class="font-display mt-6 text-lg font-semibold text-ink-950 group-hover:text-brand-700">Wealth Management</h3>
-          <p class="mt-2.5 text-sm leading-relaxed text-ink-600/80">Integrated wealth solutions — goal planning, advisory, preservation, retirement, and intergenerational wealth transfer.</p>
+          <h3 class="font-display mt-5 text-lg font-semibold group-hover:text-brand-700">Wealth Management</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-600">Goal planning, preservation, retirement, and intergenerational wealth transfer.</p>
+          <p class="mt-4 text-sm font-semibold text-brand-700">Learn more <span class="inline-block transition group-hover:translate-x-1">→</span></p>
         </a>
-        <a href="services.html#collective-schemes" class="reveal group rounded-2xl border border-ink-950/5 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/10">
-          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10 text-brand-600 transition group-hover:bg-brand-500 group-hover:text-ink-950">
+        <a href="services.html#collective-schemes" class="reveal group rounded-xl border border-ink-950/5 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:border-brand-500/40 hover:shadow-lg">
+          <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-500/10 text-brand-600 transition group-hover:bg-brand-600 group-hover:text-white">
             <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-1.13a4 4 0 10-4-4 4 4 0 004 4zm6-4a3 3 0 11-3-3m-12 3a3 3 0 103-3"/></svg>
           </div>
-          <h3 class="font-display mt-6 text-lg font-semibold text-ink-950 group-hover:text-brand-700">Collective Investment Schemes</h3>
-          <p class="mt-2.5 text-sm leading-relaxed text-ink-600/80">Pooled investment vehicles that give investors access to diversified, professionally managed portfolios.</p>
+          <h3 class="font-display mt-5 text-lg font-semibold group-hover:text-brand-700">Collective Investment Schemes</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-600">Pooled vehicles giving investors access to professionally managed, diversified portfolios.</p>
+          <p class="mt-4 text-sm font-semibold text-brand-700">Learn more <span class="inline-block transition group-hover:translate-x-1">→</span></p>
         </a>
-        <a href="services.html#treasury" class="reveal reveal-delay-1 group rounded-2xl border border-ink-950/5 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/10">
-          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10 text-brand-600 transition group-hover:bg-brand-500 group-hover:text-ink-950">
+        <a href="services.html#treasury" class="reveal reveal-delay-1 group rounded-xl border border-ink-950/5 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:border-brand-500/40 hover:shadow-lg">
+          <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-500/10 text-brand-600 transition group-hover:bg-brand-600 group-hover:text-white">
             <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0v-4a1 1 0 011-1h2a1 1 0 011 1v4m-4-8h.01M14 13h.01M10 9h.01M14 9h.01"/></svg>
           </div>
-          <h3 class="font-display mt-6 text-lg font-semibold text-ink-950 group-hover:text-brand-700">Treasury &amp; Liquidity Management</h3>
-          <p class="mt-2.5 text-sm leading-relaxed text-ink-600/80">Helping businesses optimize excess liquidity while maintaining operational flexibility.</p>
+          <h3 class="font-display mt-5 text-lg font-semibold group-hover:text-brand-700">Treasury &amp; Liquidity</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-600">Optimizing excess liquidity for businesses while maintaining operational flexibility.</p>
+          <p class="mt-4 text-sm font-semibold text-brand-700">Learn more <span class="inline-block transition group-hover:translate-x-1">→</span></p>
         </a>
-        <a href="services.html#advisory" class="reveal reveal-delay-2 group rounded-2xl border border-ink-950/5 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/10">
-          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10 text-brand-600 transition group-hover:bg-brand-500 group-hover:text-ink-950">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.7 3.3a1 1 0 011.4 0l1.2 1.2a1 1 0 00.7.3H15a2 2 0 012 2v1.9a1 1 0 00.3.7l1.2 1.2a1 1 0 010 1.4l-1.2 1.2a1 1 0 00-.3.7V16a2 2 0 01-2 2h-1.9a1 1 0 00-.7.3l-1.2 1.2a1 1 0 01-1.4 0l-1.2-1.2a1 1 0 00-.7-.3H6a2 2 0 01-2-2v-1.9a1 1 0 00-.3-.7l-1.2-1.2a1 1 0 010-1.4l1.2-1.2a1 1 0 00.3-.7V7a2 2 0 012-2h1.9a1 1 0 00.7-.3l1.1-1.4z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/></svg>
+        <a href="services.html#advisory" class="reveal reveal-delay-2 group rounded-xl border border-ink-950/5 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:border-brand-500/40 hover:shadow-lg">
+          <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-500/10 text-brand-600 transition group-hover:bg-brand-600 group-hover:text-white">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-4 4v-4z"/></svg>
           </div>
-          <h3 class="font-display mt-6 text-lg font-semibold text-ink-950 group-hover:text-brand-700">Investment Advisory</h3>
-          <p class="mt-2.5 text-sm leading-relaxed text-ink-600/80">Independent investment guidance supported by market intelligence, research capabilities, and analytical rigor.</p>
-        </a>
-      </div>
-
-      <div class="reveal mt-12 text-center">
-        <a href="services.html" class="group inline-flex items-center gap-2 text-sm font-semibold text-brand-700 transition hover:text-brand-600">
-          View all services in detail
-          <svg class="h-4 w-4 transition group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 6l6 6-6 6M5 12h14"/></svg>
+          <h3 class="font-display mt-5 text-lg font-semibold group-hover:text-brand-700">Investment Advisory</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-600">Independent guidance supported by market intelligence and analytical rigor.</p>
+          <p class="mt-4 text-sm font-semibold text-brand-700">Learn more <span class="inline-block transition group-hover:translate-x-1">→</span></p>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ============ PHILOSOPHY PREVIEW ============ -->
-  <section class="relative overflow-hidden bg-ink-950 bg-grid py-24 lg:py-32">
-    <div class="pointer-events-none absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-500/5 blur-3xl"></div>
-    <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="reveal mx-auto max-w-2xl text-center">
-        <p class="text-xs font-bold uppercase tracking-[0.25em] text-brand-400">Investment Philosophy</p>
-        <h2 class="font-display mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">Five principles guide every decision</h2>
-        <p class="mt-4 text-lg text-white/60">Successful investing is not about chasing trends — it is about maintaining discipline through market cycles.</p>
-      </div>
-
-      <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-        <div class="reveal rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition hover:border-brand-500/40">
-          <span class="font-display text-3xl font-bold text-brand-500/40">01</span>
-          <h3 class="font-display mt-3 text-base font-semibold text-white">Capital Preservation First</h3>
-          <p class="mt-2 text-sm leading-relaxed text-white/60">Protecting client capital remains our foremost responsibility.</p>
+  <!-- ============ ADVISORY SPLIT ============ -->
+  <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+    <div class="grid items-center gap-14 lg:grid-cols-2">
+      <div class="reveal">
+        <p class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] text-brand-700">
+          <span class="h-px w-10 bg-brand-600"></span>
+          How We Work
+        </p>
+        <h2 class="font-display mt-5 text-3xl font-bold tracking-tight sm:text-4xl">Every strategy begins with a conversation</h2>
+        <p class="mt-5 text-lg leading-relaxed text-ink-600">
+          Our structured investment process starts with understanding you — your objectives, constraints, liquidity needs, and risk tolerance — before a single unit of capital moves.
+        </p>
+        <div class="mt-8 grid grid-cols-2 gap-6">
+          <div class="rounded-xl bg-slate-50 p-5"><p class="font-display text-2xl font-bold text-brand-700">6 Steps</p><p class="mt-1 text-sm text-ink-600">A rigorous, repeatable investment process</p></div>
+          <div class="rounded-xl bg-slate-50 p-5"><p class="font-display text-2xl font-bold text-brand-700">5 Principles</p><p class="mt-1 text-sm text-ink-600">A philosophy of discipline through cycles</p></div>
         </div>
-        <div class="reveal reveal-delay-1 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition hover:border-brand-500/40">
-          <span class="font-display text-3xl font-bold text-brand-500/40">02</span>
-          <h3 class="font-display mt-3 text-base font-semibold text-white">Risk-Adjusted Returns</h3>
-          <p class="mt-2 text-sm leading-relaxed text-white/60">We pursue returns commensurate with the risks undertaken.</p>
-        </div>
-        <div class="reveal reveal-delay-2 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition hover:border-brand-500/40">
-          <span class="font-display text-3xl font-bold text-brand-500/40">03</span>
-          <h3 class="font-display mt-3 text-base font-semibold text-white">Research-Driven Decisions</h3>
-          <p class="mt-2 text-sm leading-relaxed text-white/60">Every decision is informed by rigorous analysis and disciplined evaluation.</p>
-        </div>
-        <div class="reveal reveal-delay-3 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition hover:border-brand-500/40">
-          <span class="font-display text-3xl font-bold text-brand-500/40">04</span>
-          <h3 class="font-display mt-3 text-base font-semibold text-white">Diversification</h3>
-          <p class="mt-2 text-sm leading-relaxed text-white/60">Thoughtful portfolio construction manages uncertainty and enhances resilience.</p>
-        </div>
-        <div class="reveal reveal-delay-3 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition hover:border-brand-500/40">
-          <span class="font-display text-3xl font-bold text-brand-500/40">05</span>
-          <h3 class="font-display mt-3 text-base font-semibold text-white">Long-Term Perspective</h3>
-          <p class="mt-2 text-sm leading-relaxed text-white/60">We prioritize sustainable value creation over short-term speculation.</p>
-        </div>
-      </div>
-
-      <div class="reveal mt-12 text-center">
-        <a href="approach.html" class="group inline-flex items-center gap-2 rounded-full border border-white/15 px-7 py-3.5 text-sm font-semibold text-white transition hover:border-brand-500/60 hover:text-brand-400">
-          See Our Full Investment Process
-          <svg class="h-4 w-4 transition group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 6l6 6-6 6M5 12h14"/></svg>
+        <a href="approach.html" class="mt-9 inline-flex items-center gap-2 rounded-lg bg-brand-600 px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700">
+          See Our Approach
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 6l6 6-6 6M5 12h14"/></svg>
         </a>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <img src="assets/img/advisory.jpg" alt="A Rohi Capital advisor in conversation with a client" class="w-full rounded-2xl object-cover shadow-lg" />
       </div>
     </div>
   </section>
 
-  <!-- ============ WHO WE SERVE ============ -->
-  <section class="bg-white py-24 lg:py-32">
+  <!-- ============ WHO WE SERVE (dark band) ============ -->
+  <section class="bg-ink-950 py-20 lg:py-28">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="reveal mx-auto max-w-2xl text-center">
-        <p class="text-xs font-bold uppercase tracking-[0.25em] text-brand-600">Who We Serve</p>
-        <h2 class="font-display mt-3 text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">Tailored solutions for every kind of investor</h2>
+        <p class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] text-brand-400">
+          <span class="h-px w-10 bg-brand-500"></span>
+          Who We Serve
+          <span class="h-px w-10 bg-brand-500"></span>
+        </p>
+        <h2 class="font-display mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl">Tailored solutions for every kind of investor</h2>
       </div>
-      <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="reveal rounded-2xl border border-ink-950/5 bg-slate-50 p-8 transition hover:border-brand-500/30 hover:bg-white hover:shadow-lg">
-          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10 text-brand-600">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+      <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="reveal rounded-xl border border-white/10 bg-white/5 p-7 transition hover:border-brand-500/50">
+          <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-500/15 text-brand-400">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
           </div>
-          <h3 class="font-display mt-5 text-lg font-semibold text-ink-950">Individuals</h3>
-          <p class="mt-2.5 text-sm leading-relaxed text-ink-600/80">Professionals, entrepreneurs, retirees, and high-net-worth individuals seeking wealth preservation and growth.</p>
+          <h3 class="font-display mt-4 text-lg font-semibold text-white">Individuals</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/60">Professionals, entrepreneurs, retirees, and high-net-worth individuals seeking preservation and growth.</p>
         </div>
-        <div class="reveal reveal-delay-1 rounded-2xl border border-ink-950/5 bg-slate-50 p-8 transition hover:border-brand-500/30 hover:bg-white hover:shadow-lg">
-          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10 text-brand-600">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0v-4a1 1 0 011-1h2a1 1 0 011 1v4m-4-8h.01M14 13h.01M10 9h.01M14 9h.01"/></svg>
+        <div class="reveal reveal-delay-1 rounded-xl border border-white/10 bg-white/5 p-7 transition hover:border-brand-500/50">
+          <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-500/15 text-brand-400">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0v-4a1 1 0 011-1h2a1 1 0 011 1v4m-4-8h.01M14 13h.01M10 9h.01M14 9h.01"/></svg>
           </div>
-          <h3 class="font-display mt-5 text-lg font-semibold text-ink-950">Corporate Organisations</h3>
-          <p class="mt-2.5 text-sm leading-relaxed text-ink-600/80">Businesses looking to optimize treasury portfolios and manage surplus liquidity efficiently.</p>
+          <h3 class="font-display mt-4 text-lg font-semibold text-white">Corporate Organisations</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/60">Businesses optimizing treasury portfolios and managing surplus liquidity efficiently.</p>
         </div>
-        <div class="reveal reveal-delay-2 rounded-2xl border border-ink-950/5 bg-slate-50 p-8 transition hover:border-brand-500/30 hover:bg-white hover:shadow-lg">
-          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10 text-brand-600">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3L2 8l10 5 10-5-10-5zM5 10.5V16c0 1.7 3.1 3 7 3s7-1.3 7-3v-5.5"/></svg>
+        <div class="reveal reveal-delay-2 rounded-xl border border-white/10 bg-white/5 p-7 transition hover:border-brand-500/50">
+          <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-500/15 text-brand-400">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3L2 8l10 5 10-5-10-5zM5 10.5V16c0 1.7 3.1 3 7 3s7-1.3 7-3v-5.5"/></svg>
           </div>
-          <h3 class="font-display mt-5 text-lg font-semibold text-ink-950">Institutional Investors</h3>
-          <p class="mt-2.5 text-sm leading-relaxed text-ink-600/80">Foundations, associations, religious organizations, cooperatives, and institutions requiring professional management.</p>
+          <h3 class="font-display mt-4 text-lg font-semibold text-white">Institutional Investors</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/60">Foundations, associations, religious organizations, cooperatives, and institutions.</p>
         </div>
-        <div class="reveal reveal-delay-3 rounded-2xl border border-ink-950/5 bg-slate-50 p-8 transition hover:border-brand-500/30 hover:bg-white hover:shadow-lg">
-          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10 text-brand-600">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 010 18M12 3a15 15 0 000 18M12 3a9 9 0 100 18 9 9 0 000-18z"/></svg>
+        <div class="reveal reveal-delay-3 rounded-xl border border-white/10 bg-white/5 p-7 transition hover:border-brand-500/50">
+          <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-500/15 text-brand-400">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 010 18M12 3a15 15 0 000 18M12 3a9 9 0 100 18 9 9 0 000-18z"/></svg>
           </div>
-          <h3 class="font-display mt-5 text-lg font-semibold text-ink-950">Diaspora Investors</h3>
-          <p class="mt-2.5 text-sm leading-relaxed text-ink-600/80">Citizens abroad seeking structured, professionally managed access to domestic investment opportunities.</p>
+          <h3 class="font-display mt-4 text-lg font-semibold text-white">Diaspora Investors</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/60">Citizens abroad seeking structured access to domestic investment opportunities.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ CTA BANNER ============ -->
-  <section class="relative overflow-hidden bg-ink-950 bg-grid py-20 lg:py-28">
-    <div class="pointer-events-none absolute -top-24 left-1/3 h-96 w-96 rounded-full bg-brand-500/10 blur-3xl"></div>
-    <div class="relative mx-auto max-w-4xl px-6 text-center lg:px-8">
-      <img src="assets/logo-mark.png" alt="" class="mx-auto h-14 w-auto" />
-      <h2 class="font-display mt-8 text-3xl font-bold tracking-tight text-white sm:text-4xl">Every investment entrusted to us represents dreams, aspirations, and futures.</h2>
-      <p class="mx-auto mt-5 max-w-2xl text-lg text-white/60">Your confidence is our most valuable asset. Talk to us about building, preserving, and transferring your wealth.</p>
+  <!-- ============ TECHNOLOGY SPLIT ============ -->
+  <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+    <div class="grid items-center gap-14 lg:grid-cols-2">
+      <div class="reveal order-2 lg:order-1">
+        <img src="assets/img/tech.jpg" alt="Technology-driven portfolio monitoring at Rohi Capital" class="w-full rounded-2xl object-cover shadow-lg" />
+      </div>
+      <div class="reveal reveal-delay-1 order-1 lg:order-2">
+        <p class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] text-brand-700">
+          <span class="h-px w-10 bg-brand-600"></span>
+          Technology &amp; Innovation
+        </p>
+        <h2 class="font-display mt-5 text-3xl font-bold tracking-tight sm:text-4xl">Modern tools. Timeless discipline.</h2>
+        <p class="mt-5 text-lg leading-relaxed text-ink-600">
+          We leverage modern technology to enhance portfolio monitoring, investment reporting, client experience, operational efficiency, data security, and decision support.
+        </p>
+        <div class="mt-7 grid grid-cols-2 gap-x-8 gap-y-3 text-sm font-medium text-ink-950">
+          <p class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-brand-500"></span>Portfolio monitoring</p>
+          <p class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-brand-500"></span>Investment reporting</p>
+          <p class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-brand-500"></span>Client experience</p>
+          <p class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-brand-500"></span>Operational efficiency</p>
+          <p class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-brand-500"></span>Data security</p>
+          <p class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-brand-500"></span>Decision analytics</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA (photo band) ============ -->
+  <section class="relative">
+    <div class="absolute inset-0">
+      <img src="assets/img/presentation.jpg" alt="" class="h-full w-full object-cover" />
+      <div class="absolute inset-0 bg-ink-950/85"></div>
+    </div>
+    <div class="relative mx-auto max-w-4xl px-6 py-24 text-center lg:py-32">
+      <img src="assets/logo-mark.png" alt="" class="mx-auto h-12 w-auto" />
+      <h2 class="font-display mt-7 text-3xl font-bold tracking-tight text-white sm:text-4xl">Your confidence is our most valuable asset</h2>
+      <p class="mx-auto mt-5 max-w-2xl text-lg text-white/70">Every investment entrusted to us represents dreams, aspirations, responsibilities, and futures. Let's protect and grow yours.</p>
       <div class="mt-9 flex flex-wrap items-center justify-center gap-4">
-        <a href="contact.html" class="rounded-full bg-brand-500 px-8 py-3.5 text-sm font-semibold text-ink-950 shadow-lg shadow-brand-500/25 transition hover:bg-brand-400">Book a Consultation</a>
-        <a href="about.html" class="rounded-full border border-white/15 px-8 py-3.5 text-sm font-semibold text-white transition hover:border-brand-500/60 hover:text-brand-400">Learn About Us</a>
+        <a href="contact.html" class="rounded-lg bg-brand-600 px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-brand-600/30 transition hover:bg-brand-700">Book a Consultation</a>
+        <a href="approach.html" class="rounded-lg border border-white/30 px-8 py-4 text-sm font-semibold text-white transition hover:border-brand-400 hover:text-brand-400">How We Invest</a>
       </div>
     </div>
   </section>
 
   <!-- ============ FOOTER ============ -->
-  <footer class="border-t border-white/5 bg-ink-950">
+  <footer class="bg-ink-950">
     <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
       <div class="grid gap-12 lg:grid-cols-4">
         <div class="lg:col-span-2">
@@ -376,7 +500,7 @@
         <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
           <p class="text-xs text-white/40">© 2026 Rohi Capital Limited. All rights reserved.</p>
           <div class="flex gap-6 text-xs">
-            <a href="mailto:info@rohi-capital.com" class="text-white/40 transition hover:text-brand-400">info@rohi-capital.com</a>
+            <a href="mailto:hello@rohi-capital.com" class="text-white/40 transition hover:text-brand-400">hello@rohi-capital.com</a>
             <a href="https://www.rohi-capital.com" class="text-white/40 transition hover:text-brand-400">www.rohi-capital.com</a>
           </div>
         </div>
@@ -385,5 +509,6 @@
   </footer>
 
   <script src="assets/site.js"></script>
+  <script src="assets/motion.js"></script>
 </body>
 </html>
