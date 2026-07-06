@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rohi Capital Limited — Building Wealth. Preserving Legacies.</title>
+  <meta name="description" content="Rohi Capital Limited is an investment and asset management company providing innovative, disciplined, and client-focused investment solutions." />
+  <link rel="icon" type="image/png" href="../assets/logo-mark.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50:'#e6fdf3', 100:'#c3fae2', 300:'#4ff0a9', 400:'#21e893', 500:'#02df82', 600:'#02b96c', 700:'#059257' },
+            ink:   { 950:'#030f0f', 900:'#081714', 800:'#0d2420', 700:'#153730', 600:'#2b544a' },
+          },
+          fontFamily: { display:['Poppins','sans-serif'], body:['Inter','sans-serif'] },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { font-family:'Inter',sans-serif; }
+    .font-display { font-family:'Poppins',sans-serif; }
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-delay-1 { transition-delay:.1s; } .reveal-delay-2 { transition-delay:.2s; } .reveal-delay-3 { transition-delay:.3s; }
+    /* Motion layer (glow cards + charts) */
+    .glow-card { transition: border-color .35s ease, box-shadow .35s ease, transform .35s ease; }
+    .glow-card:hover { border-color: rgba(2,223,130,.55) !important; box-shadow: 0 0 0 1px rgba(2,223,130,.28), 0 16px 44px -16px rgba(2,223,130,.45); }
+    .draw-line { stroke-dasharray: 1300; stroke-dashoffset: 1300; }
+    .chart-on .draw-line { animation: drawline 2.2s ease forwards .2s; }
+    @keyframes drawline { to { stroke-dashoffset: 0; } }
+    .chart-area { opacity: 0; }
+    .chart-on .chart-area { animation: fadein 1.2s ease forwards 1.3s; }
+    .chart-dot { opacity: 0; }
+    .chart-on .chart-dot { animation: fadein .4s ease forwards 2.2s; }
+    @keyframes fadein { to { opacity: 1; } }
+    .bar { transform: scaleY(0); transform-origin: bottom; transition: transform .9s cubic-bezier(.22,.9,.35,1); }
+    .chart-on .bar { transform: scaleY(1); }
+    .donut-arc { stroke-dasharray: 0 400; transition: stroke-dasharray 1.6s ease .2s; }
+    /* Option E scroll effects */
+    #scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: linear-gradient(90deg, #02b96c, #02df82); z-index: 100; }
+    [data-speed] { will-change: transform; }
+    [data-zoom] { overflow: hidden; }
+    [data-zoom] img { transform: scale(1.18); will-change: transform; }
+    .scroll-cue { animation: cue 1.8s ease-in-out infinite; }
+    @keyframes cue { 0%, 100% { transform: translateY(0); opacity: .65; } 50% { transform: translateY(10px); opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { #scroll-progress { display: none; } [data-zoom] img { transform: none; } }
+  </style>
+</head>
+
+<body class="bg-white text-ink-950 antialiased">
+
+  <!-- ============ NAVBAR (transparent → solid on scroll) ============ -->
+  <header id="navbar" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
+      <a href="index.html"><img src="../assets/logo-full-white.svg" alt="Rohi Capital Limited" class="h-10 w-auto" /></a>
+      <div class="hidden items-center gap-8 lg:flex">
+        <a href="index.html" class="text-sm font-semibold text-brand-400">Home</a>
+        <a href="about.html" class="text-sm font-medium text-white/80 transition hover:text-brand-400">About Us</a>
+        <a href="services.html" class="text-sm font-medium text-white/80 transition hover:text-brand-400">Services</a>
+        <a href="approach.html" class="text-sm font-medium text-white/80 transition hover:text-brand-400">Our Approach</a>
+        <a href="contact.html" class="text-sm font-medium text-white/80 transition hover:text-brand-400">Contact</a>
+        <a href="contact.html" class="rounded-lg bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-600/30 transition hover:bg-brand-700">Book a Consultation</a>
+      </div>
+      <button id="menu-btn" class="lg:hidden text-white" aria-label="Open menu" aria-expanded="false">
+        <svg id="icon-open" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg id="icon-close" class="hidden h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="hidden border-t border-white/10 bg-ink-950/95 backdrop-blur-md lg:hidden">
+      <div class="space-y-1 px-6 py-4">
+        <a href="index.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-brand-400">Home</a>
+        <a href="about.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/80 hover:bg-white/5">About Us</a>
+        <a href="services.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/80 hover:bg-white/5">Services</a>
+        <a href="approach.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/80 hover:bg-white/5">Our Approach</a>
+        <a href="contact.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-white/80 hover:bg-white/5">Contact</a>
+        <a href="contact.html" class="mt-2 block rounded-lg bg-brand-600 px-6 py-3 text-center text-sm font-semibold text-white">Book a Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ FULL-SCREEN PARALLAX HERO ============ -->
+  <section class="relative flex h-screen items-center overflow-hidden">
+    <img src="../assets/img/hero-team.jpg" alt="Rohi Capital investment professionals in a strategy meeting"
+         class="absolute left-0 -top-[12%] h-[124%] w-full object-cover" data-speed="0.22" />
+    <div class="absolute inset-0 bg-gradient-to-r from-ink-950/95 via-ink-950/75 to-ink-950/40"></div>
+
+    <div class="relative mx-auto w-full max-w-7xl px-6 lg:px-8" data-hero-fade>
+      <p class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-brand-400">
+        <span class="h-px w-12 bg-brand-500"></span>
+        Investment &amp; Asset Management
+      </p>
+      <h1 class="font-display mt-7 max-w-3xl text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
+        Building Wealth.<br/>Preserving Legacies.<br/><span class="text-brand-400">Creating Enduring Value.</span>
+      </h1>
+      <p class="mt-7 max-w-xl text-lg leading-relaxed text-white/75">
+        Rohi Capital Limited provides innovative, disciplined, and client-focused investment solutions to individuals, businesses, institutions, and sophisticated investors.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center gap-4">
+        <a href="services.html" class="rounded-lg bg-brand-600 px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-brand-600/30 transition hover:bg-brand-700">Explore Our Services</a>
+        <a href="about.html" class="rounded-lg border border-white/30 bg-white/5 px-8 py-4 text-sm font-semibold text-white backdrop-blur transition hover:border-brand-400 hover:text-brand-400">Who We Are</a>
+      </div>
+    </div>
+
+    <div class="scroll-cue absolute bottom-8 left-1/2 -translate-x-1/2 text-white/70">
+      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7-7-7m14-8l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ PARALLAX CURTAIN 1 — PURPOSE ============ -->
+  <section class="relative overflow-hidden">
+    <img src="../assets/img/presentation.jpg" alt="" class="absolute left-0 -top-[20%] h-[140%] w-full object-cover" data-speed="0.18" />
+    <div class="absolute inset-0 bg-ink-950/85"></div>
+    <div class="relative mx-auto flex min-h-[70vh] max-w-5xl flex-col items-center justify-center px-6 py-28 text-center">
+      <img src="../assets/logo-mark.png" alt="" class="h-14 w-auto" data-speed="0.06" />
+      <h2 class="font-display mt-8 text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
+        "To transform <span class="text-brand-400">savings into prosperity</span> and investments into lasting legacies."
+      </h2>
+      <p class="mt-6 text-sm font-semibold uppercase tracking-[0.3em] text-white/50">Our Purpose</p>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 1 — STICKY IMAGE / SCROLLING STORY ============ -->
+  <section class="mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
+    <div class="grid gap-14 lg:grid-cols-2">
+      <div>
+        <div class="lg:sticky lg:top-28">
+          <div class="rounded-2xl shadow-2xl" data-zoom>
+            <img src="../assets/img/meeting.jpg" alt="The Rohi Capital team in session" class="h-[420px] w-full rounded-2xl object-cover lg:h-[520px]" />
+          </div>
+          <div class="-mt-8 ml-8 hidden w-max rounded-xl bg-brand-600 px-6 py-4 text-white shadow-xl lg:block" data-speed="0.05">
+            <p class="font-display font-bold">Rooted in integrity. Built for generations.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-14">
+        <div class="reveal">
+          <p class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] text-brand-700">
+            <span class="h-px w-10 bg-brand-600"></span>
+            Who We Are
+          </p>
+          <h2 class="font-display mt-5 text-3xl font-bold tracking-tight sm:text-4xl">A modern asset manager with a fiduciary heart</h2>
+          <p class="mt-5 text-lg leading-relaxed text-ink-600">
+            Rohi Capital Limited is an investment and asset management company established to provide innovative, disciplined, and client-focused investment solutions to individuals, businesses, institutions, and sophisticated investors.
+          </p>
+        </div>
+        <div class="reveal border-l-2 border-brand-500 pl-6">
+          <h3 class="font-display text-xl font-semibold">Founded on belief</h3>
+          <p class="mt-3 leading-relaxed text-ink-600">
+            Wealth creation should be guided by integrity, prudent stewardship, and long-term thinking. We exist to help our clients navigate complex financial markets, preserve capital, unlock growth opportunities, and build lasting legacies.
+          </p>
+        </div>
+        <div class="reveal border-l-2 border-brand-500 pl-6">
+          <h3 class="font-display text-xl font-semibold">Local expertise, global principles</h3>
+          <p class="mt-3 leading-relaxed text-ink-600">
+            Global opportunities require sound judgment, disciplined execution, and trusted partnerships. We combine local market expertise with global investment principles to deliver solutions aligned with your aspirations and risk profile.
+          </p>
+        </div>
+        <div class="reveal border-l-2 border-brand-500 pl-6">
+          <h3 class="font-display text-xl font-semibold">Built for generations</h3>
+          <p class="mt-3 leading-relaxed text-ink-600">
+            We are building an institution designed not merely for today's opportunities, but for generations of sustainable value creation.
+          </p>
+        </div>
+        <a href="about.html" class="reveal inline-flex items-center gap-2 rounded-lg bg-ink-950 px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-700">
+          More About Us
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 6l6 6-6 6M5 12h14"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES (dark band, glow cards) ============ -->
+  <section class="bg-ink-950 py-24 lg:py-32">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="reveal mx-auto max-w-2xl text-center">
+        <p class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] text-brand-400">
+          <span class="h-px w-10 bg-brand-500"></span>
+          Our Services
+          <span class="h-px w-10 bg-brand-500"></span>
+        </p>
+        <h2 class="font-display mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl">Investment solutions built around you</h2>
+      </div>
+      <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <a href="services.html#portfolio-management" class="reveal group rounded-xl border border-white/10 bg-white/5 p-8 transition hover:-translate-y-1">
+          <h3 class="font-display text-lg font-semibold text-white group-hover:text-brand-400">Portfolio Management</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/60">Discretionary and advisory portfolios designed around your objectives and risk appetite.</p>
+          <p class="mt-4 text-sm font-semibold text-brand-400">Learn more <span class="inline-block transition group-hover:translate-x-1">→</span></p>
+        </a>
+        <a href="services.html#fixed-income" class="reveal reveal-delay-1 group rounded-xl border border-white/10 bg-white/5 p-8 transition hover:-translate-y-1">
+          <h3 class="font-display text-lg font-semibold text-white group-hover:text-brand-400">Fixed Income Investments</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/60">Capital preservation and stable income — bonds, treasury bills, Sukuk, and money markets.</p>
+          <p class="mt-4 text-sm font-semibold text-brand-400">Learn more <span class="inline-block transition group-hover:translate-x-1">→</span></p>
+        </a>
+        <a href="services.html#wealth-management" class="reveal reveal-delay-2 group rounded-xl border border-white/10 bg-white/5 p-8 transition hover:-translate-y-1">
+          <h3 class="font-display text-lg font-semibold text-white group-hover:text-brand-400">Wealth Management</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/60">Goal planning, preservation, retirement, and intergenerational wealth transfer.</p>
+          <p class="mt-4 text-sm font-semibold text-brand-400">Learn more <span class="inline-block transition group-hover:translate-x-1">→</span></p>
+        </a>
+        <a href="services.html#collective-schemes" class="reveal group rounded-xl border border-white/10 bg-white/5 p-8 transition hover:-translate-y-1">
+          <h3 class="font-display text-lg font-semibold text-white group-hover:text-brand-400">Collective Investment Schemes</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/60">Pooled vehicles giving investors access to professionally managed, diversified portfolios.</p>
+          <p class="mt-4 text-sm font-semibold text-brand-400">Learn more <span class="inline-block transition group-hover:translate-x-1">→</span></p>
+        </a>
+        <a href="services.html#treasury" class="reveal reveal-delay-1 group rounded-xl border border-white/10 bg-white/5 p-8 transition hover:-translate-y-1">
+          <h3 class="font-display text-lg font-semibold text-white group-hover:text-brand-400">Treasury &amp; Liquidity</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/60">Optimizing excess liquidity for businesses while maintaining operational flexibility.</p>
+          <p class="mt-4 text-sm font-semibold text-brand-400">Learn more <span class="inline-block transition group-hover:translate-x-1">→</span></p>
+        </a>
+        <a href="services.html#advisory" class="reveal reveal-delay-2 group rounded-xl border border-white/10 bg-white/5 p-8 transition hover:-translate-y-1">
+          <h3 class="font-display text-lg font-semibold text-white group-hover:text-brand-400">Investment Advisory</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/60">Independent guidance supported by market intelligence and analytical rigor.</p>
+          <p class="mt-4 text-sm font-semibold text-brand-400">Learn more <span class="inline-block transition group-hover:translate-x-1">→</span></p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PARALLAX CURTAIN 2 — TECHNOLOGY ============ -->
+  <section class="relative overflow-hidden">
+    <img src="../assets/img/tech.jpg" alt="" class="absolute left-0 -top-[20%] h-[140%] w-full object-cover" data-speed="0.18" />
+    <div class="absolute inset-0 bg-ink-950/80"></div>
+    <div class="relative mx-auto flex min-h-[60vh] max-w-5xl flex-col items-start justify-center px-6 py-24 lg:px-8">
+      <p class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-brand-400">
+        <span class="h-px w-12 bg-brand-500"></span>
+        Technology &amp; Innovation
+      </p>
+      <h2 class="font-display mt-6 max-w-2xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
+        Modern tools. <span class="text-brand-400">Timeless discipline.</span>
+      </h2>
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-white/70">
+        We leverage modern technology to enhance portfolio monitoring, investment reporting, client experience, operational efficiency, data security, and decision support.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ GROWTH TRAJECTORY (motion infographics) ============ -->
+  <section class="mx-auto max-w-7xl px-6 pt-24 lg:px-8 lg:pt-28">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <p class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] text-brand-700">
+        <span class="h-px w-10 bg-brand-600"></span>
+        Growth Trajectory
+        <span class="h-px w-10 bg-brand-600"></span>
+      </p>
+      <h2 class="font-display mt-5 text-3xl font-bold tracking-tight sm:text-4xl">How disciplined capital grows</h2>
+      <p class="mt-4 text-lg text-ink-600">Three habits our process is engineered around — consistency, diversification, and staying the course.</p>
+    </div>
+
+    <div class="mt-14 grid gap-6 lg:grid-cols-3">
+      <div class="chart-block reveal rounded-xl border border-ink-950/10 bg-white p-8 shadow-sm">
+        <div class="flex h-40 items-end gap-2.5" aria-hidden="true">
+          <div class="bar flex-1 rounded-t-md bg-gradient-to-t from-brand-600 to-brand-400" style="height:26%; transition-delay:.05s"></div>
+          <div class="bar flex-1 rounded-t-md bg-gradient-to-t from-brand-600 to-brand-400" style="height:36%; transition-delay:.12s"></div>
+          <div class="bar flex-1 rounded-t-md bg-gradient-to-t from-brand-600 to-brand-400" style="height:44%; transition-delay:.19s"></div>
+          <div class="bar flex-1 rounded-t-md bg-gradient-to-t from-brand-600 to-brand-400" style="height:55%; transition-delay:.26s"></div>
+          <div class="bar flex-1 rounded-t-md bg-gradient-to-t from-brand-600 to-brand-400" style="height:66%; transition-delay:.33s"></div>
+          <div class="bar flex-1 rounded-t-md bg-gradient-to-t from-brand-600 to-brand-400" style="height:80%; transition-delay:.40s"></div>
+          <div class="bar flex-1 rounded-t-md bg-gradient-to-t from-brand-600 to-brand-400" style="height:96%; transition-delay:.47s"></div>
+        </div>
+        <h3 class="font-display mt-6 text-lg font-semibold">Consistency compounds</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">Steady, disciplined contributions build momentum that market timing rarely matches.</p>
+      </div>
+
+      <div class="chart-block reveal reveal-delay-1 rounded-xl border border-ink-950/10 bg-white p-8 shadow-sm">
+        <div class="flex h-40 items-center justify-center gap-8">
+          <svg viewBox="0 0 140 140" class="h-36 w-36 -rotate-90" aria-hidden="true">
+            <circle cx="70" cy="70" r="54" fill="none" stroke="#eef2f1" stroke-width="18"/>
+            <circle class="donut-arc" data-dash="169.6 339.3" cx="70" cy="70" r="54" fill="none" stroke="#02b96c" stroke-width="18" stroke-dashoffset="0"/>
+            <circle class="donut-arc" data-dash="101.8 339.3" cx="70" cy="70" r="54" fill="none" stroke="#02df82" stroke-width="18" stroke-dashoffset="-169.6"/>
+            <circle class="donut-arc" data-dash="67.9 339.3" cx="70" cy="70" r="54" fill="none" stroke="#4ff0a9" stroke-width="18" stroke-dashoffset="-271.4"/>
+          </svg>
+          <ul class="space-y-2 text-xs font-medium text-ink-600">
+            <li class="flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-sm bg-brand-600"></span>Fixed income</li>
+            <li class="flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-sm bg-brand-500"></span>Growth assets</li>
+            <li class="flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-sm bg-brand-300"></span>Liquidity</li>
+          </ul>
+        </div>
+        <h3 class="font-display mt-6 text-lg font-semibold">Diversified by design</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">Thoughtful allocation across asset classes manages uncertainty and builds resilience.</p>
+      </div>
+
+      <div class="chart-block reveal reveal-delay-2 rounded-xl border border-ink-950/10 bg-white p-8 shadow-sm">
+        <svg viewBox="0 0 300 160" fill="none" class="h-40 w-full" aria-hidden="true">
+          <g stroke="rgba(3,15,15,0.07)"><line x1="0" y1="40" x2="300" y2="40"/><line x1="0" y1="80" x2="300" y2="80"/><line x1="0" y1="120" x2="300" y2="120"/></g>
+          <path class="draw-line" d="M0 138 L25 118 L45 132 L70 96 L95 116 L120 74 L145 94 L170 60 L195 84 L220 48 L245 66 L270 34 L300 44" stroke="#9fb4ad" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class="draw-line" d="M0 142 C60 130 90 110 150 88 C210 66 250 44 300 24" stroke="#02df82" stroke-width="3.5" stroke-linecap="round"/>
+          <circle class="chart-dot" cx="300" cy="24" r="5" fill="#02df82"/>
+        </svg>
+        <h3 class="font-display mt-6 text-lg font-semibold">Discipline over noise</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">Markets swing; process holds. We stay the course through cycles rather than chasing trends.</p>
+      </div>
+    </div>
+    <p class="reveal mt-6 text-center text-xs text-ink-950/40">Charts are illustrative of our investment philosophy only — not projections or guarantees of returns.</p>
+  </section>
+
+  <!-- ============ CHAPTER 2 — STICKY COPY / SCROLLING SEGMENTS ============ -->
+  <section class="mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
+    <div class="grid gap-14 lg:grid-cols-2">
+      <div>
+        <div class="lg:sticky lg:top-28">
+          <p class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] text-brand-700">
+            <span class="h-px w-10 bg-brand-600"></span>
+            Who We Serve
+          </p>
+          <h2 class="font-display mt-5 text-3xl font-bold tracking-tight sm:text-4xl">Every kind of investor. One standard of care.</h2>
+          <p class="mt-5 max-w-md text-lg leading-relaxed text-ink-600">
+            Every strategy begins with understanding the client — your objectives, constraints, liquidity needs, and risk tolerance.
+          </p>
+          <a href="contact.html" class="mt-8 inline-flex items-center gap-2 rounded-lg bg-brand-600 px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700">
+            Book a Consultation
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 6l6 6-6 6M5 12h14"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="rounded-2xl shadow-xl" data-zoom>
+          <img src="../assets/img/advisory.jpg" alt="A Rohi Capital advisor in conversation with a client" class="h-[320px] w-full rounded-2xl object-cover" />
+        </div>
+        <div class="reveal rounded-xl border border-ink-950/10 bg-white p-7 shadow-sm">
+          <h3 class="font-display text-lg font-semibold">Individuals</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-600">Professionals, entrepreneurs, retirees, and high-net-worth individuals seeking wealth preservation and growth.</p>
+        </div>
+        <div class="reveal rounded-xl border border-ink-950/10 bg-white p-7 shadow-sm">
+          <h3 class="font-display text-lg font-semibold">Corporate Organisations</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-600">Businesses looking to optimize treasury portfolios and manage surplus liquidity efficiently.</p>
+        </div>
+        <div class="reveal rounded-xl border border-ink-950/10 bg-white p-7 shadow-sm">
+          <h3 class="font-display text-lg font-semibold">Institutional Investors</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-600">Foundations, associations, religious organizations, cooperatives, and other institutions requiring professional management.</p>
+        </div>
+        <div class="reveal rounded-xl border border-ink-950/10 bg-white p-7 shadow-sm">
+          <h3 class="font-display text-lg font-semibold">Diaspora Investors</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-600">Citizens abroad seeking structured, professionally managed access to domestic investment opportunities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PARALLAX CURTAIN 3 — CTA ============ -->
+  <section class="relative overflow-hidden">
+    <img src="../assets/img/businesswoman.jpg" alt="" class="absolute left-0 -top-[25%] h-[150%] w-full object-cover object-[50%_20%]" data-speed="0.16" />
+    <div class="absolute inset-0 bg-gradient-to-r from-ink-950/95 via-ink-950/80 to-ink-950/60"></div>
+    <div class="relative mx-auto flex min-h-[70vh] max-w-5xl flex-col items-center justify-center px-6 py-28 text-center">
+      <h2 class="font-display max-w-3xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
+        Your confidence is our <span class="text-brand-400">most valuable asset.</span>
+      </h2>
+      <p class="mx-auto mt-6 max-w-2xl text-lg text-white/70">
+        Every investment entrusted to us represents dreams, aspirations, responsibilities, and futures. Let's protect and grow yours.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <a href="contact.html" class="rounded-lg bg-brand-600 px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-brand-600/30 transition hover:bg-brand-700">Book a Consultation</a>
+        <a href="approach.html" class="rounded-lg border border-white/30 px-8 py-4 text-sm font-semibold text-white transition hover:border-brand-400 hover:text-brand-400">How We Invest</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-ink-950">
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+      <div class="grid gap-12 lg:grid-cols-4">
+        <div class="lg:col-span-2">
+          <a href="index.html"><img src="../assets/logo-full-white.svg" alt="Rohi Capital Limited" class="h-11 w-auto" /></a>
+          <p class="mt-5 max-w-sm text-sm leading-relaxed text-white/50">
+            An investment and asset management company providing innovative, disciplined, and client-focused investment solutions — built on integrity, prudent stewardship, and long-term thinking.
+          </p>
+          <a href="https://www.linkedin.com/in/rohi-capital" target="_blank" rel="noopener" class="mt-6 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/60 transition hover:border-brand-500/60 hover:text-brand-400" aria-label="LinkedIn">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 013.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          </a>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-white/40">Company</p>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li><a href="about.html" class="text-white/60 transition hover:text-brand-400">About Us</a></li>
+            <li><a href="approach.html" class="text-white/60 transition hover:text-brand-400">Our Approach</a></li>
+            <li><a href="about.html#governance" class="text-white/60 transition hover:text-brand-400">Governance &amp; Compliance</a></li>
+            <li><a href="contact.html" class="text-white/60 transition hover:text-brand-400">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-white/40">Services</p>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li><a href="services.html#portfolio-management" class="text-white/60 transition hover:text-brand-400">Portfolio Management</a></li>
+            <li><a href="services.html#fixed-income" class="text-white/60 transition hover:text-brand-400">Fixed Income Investments</a></li>
+            <li><a href="services.html#wealth-management" class="text-white/60 transition hover:text-brand-400">Wealth Management</a></li>
+            <li><a href="services.html#collective-schemes" class="text-white/60 transition hover:text-brand-400">Collective Investment Schemes</a></li>
+            <li><a href="services.html#treasury" class="text-white/60 transition hover:text-brand-400">Treasury &amp; Liquidity</a></li>
+            <li><a href="services.html#advisory" class="text-white/60 transition hover:text-brand-400">Investment Advisory</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-14 border-t border-white/5 pt-8">
+        <p class="text-xs leading-relaxed text-white/35">
+          Investment involves risk, including the possible loss of principal. Past performance is not indicative of future results. Services are offered subject to obtaining and maintaining all required regulatory approvals. This website is for informational purposes only and does not constitute an offer or solicitation to buy or sell any security.
+        </p>
+        <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
+          <p class="text-xs text-white/40">© 2026 Rohi Capital Limited. All rights reserved.</p>
+          <div class="flex gap-6 text-xs">
+            <a href="mailto:info@rohi-capital.com" class="text-white/40 transition hover:text-brand-400">info@rohi-capital.com</a>
+            <a href="https://www.rohi-capital.com" class="text-white/40 transition hover:text-brand-400">www.rohi-capital.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+  <script src="../assets/motion.js"></script>
+  <script src="../assets/parallax.js"></script>
+  <script>
+    // Navbar: transparent over hero, solid after scrolling
+    const navEl = document.getElementById('navbar');
+    const setNav = () => {
+      if (window.scrollY > 40) navEl.classList.add('bg-ink-950/90', 'backdrop-blur-md', 'shadow-lg');
+      else navEl.classList.remove('bg-ink-950/90', 'backdrop-blur-md', 'shadow-lg');
+    };
+    window.addEventListener('scroll', setNav, { passive: true });
+    setNav();
+  </script>
+</body>
+</html>

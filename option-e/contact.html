@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Rohi Capital Limited</title>
+  <meta name="description" content="Book a consultation with Rohi Capital Limited. Email info@rohi-capital.com or send us a message." />
+  <link rel="icon" type="image/png" href="../assets/logo-mark.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50:'#e6fdf3', 100:'#c3fae2', 300:'#4ff0a9', 400:'#21e893', 500:'#02df82', 600:'#02b96c', 700:'#059257' },
+            ink:   { 950:'#030f0f', 900:'#081714', 800:'#0d2420', 700:'#153730', 600:'#2b544a' },
+          },
+          fontFamily: { display:['Poppins','sans-serif'], body:['Inter','sans-serif'] },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { font-family:'Inter',sans-serif; }
+    .font-display { font-family:'Poppins',sans-serif; }
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-delay-1 { transition-delay:.1s; }
+  
+    /* Option D motion layer */
+    .glow-card { transition: border-color .35s ease, box-shadow .35s ease, transform .35s ease; }
+    .glow-card:hover { border-color: rgba(2,223,130,.55) !important; box-shadow: 0 0 0 1px rgba(2,223,130,.28), 0 16px 44px -16px rgba(2,223,130,.45); }
+    .draw-line { stroke-dasharray: 1300; stroke-dashoffset: 1300; }
+    .chart-on .draw-line { animation: drawline 2.2s ease forwards .2s; }
+    @keyframes drawline { to { stroke-dashoffset: 0; } }
+    .chart-area { opacity: 0; }
+    .chart-on .chart-area { animation: fadein 1.2s ease forwards 1.3s; }
+    .chart-dot { opacity: 0; }
+    .chart-on .chart-dot { animation: fadein .4s ease forwards 2.2s; }
+    @keyframes fadein { to { opacity: 1; } }
+    .bar { transform: scaleY(0); transform-origin: bottom; transition: transform .9s cubic-bezier(.22,.9,.35,1); }
+    .chart-on .bar { transform: scaleY(1); }
+    .donut-arc { stroke-dasharray: 0 400; transition: stroke-dasharray 1.6s ease .2s; }
+  
+    /* Option E scroll effects */
+    #scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: linear-gradient(90deg, #02b96c, #02df82); z-index: 100; }
+    [data-speed] { will-change: transform; }
+    [data-zoom] { overflow: hidden; }
+    [data-zoom] img { transform: scale(1.18); will-change: transform; }
+    .scroll-cue { animation: cue 1.8s ease-in-out infinite; }
+    @keyframes cue { 0%, 100% { transform: translateY(0); opacity: .65; } 50% { transform: translateY(10px); opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { #scroll-progress { display: none; } [data-zoom] img { transform: none; } }
+  </style>
+</head>
+
+<body class="bg-white text-ink-950 antialiased">
+
+  <!-- ============ TOPBAR ============ -->
+  <div class="bg-ink-950 text-xs text-white/70">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-2 lg:px-8">
+      <p class="hidden font-medium tracking-wide sm:block">Building Wealth. Preserving Legacies. Creating Enduring Value.</p>
+      <div class="flex items-center gap-6">
+        <a href="mailto:info@rohi-capital.com" class="flex items-center gap-1.5 transition hover:text-brand-400">
+          <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.9 5.3a2 2 0 002.2 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          info@rohi-capital.com
+        </a>
+        <a href="https://www.linkedin.com/in/rohi-capital" target="_blank" rel="noopener" class="flex items-center gap-1.5 transition hover:text-brand-400">
+          <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 013.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="sticky top-0 z-50 bg-white/95 shadow-sm backdrop-blur-md">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+      <a href="index.html"><img src="../assets/logo-full.svg" alt="Rohi Capital Limited" class="h-10 w-auto" /></a>
+      <div class="hidden items-center gap-8 lg:flex">
+        <a href="index.html" class="text-sm font-medium text-ink-950/70 transition hover:text-brand-700">Home</a>
+        <a href="about.html" class="text-sm font-medium text-ink-950/70 transition hover:text-brand-700">About Us</a>
+        <a href="services.html" class="text-sm font-medium text-ink-950/70 transition hover:text-brand-700">Services</a>
+        <a href="approach.html" class="text-sm font-medium text-ink-950/70 transition hover:text-brand-700">Our Approach</a>
+        <a href="contact.html" class="text-sm font-semibold text-brand-700">Contact</a>
+        <a href="#form" class="rounded-lg bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700">Book a Consultation</a>
+      </div>
+      <button id="menu-btn" class="lg:hidden text-ink-950" aria-label="Open menu" aria-expanded="false">
+        <svg id="icon-open" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg id="icon-close" class="hidden h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="hidden border-t border-ink-950/10 bg-white lg:hidden">
+      <div class="space-y-1 px-6 py-4">
+        <a href="index.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-ink-950/80 hover:bg-ink-950/5">Home</a>
+        <a href="about.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-ink-950/80 hover:bg-ink-950/5">About Us</a>
+        <a href="services.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-ink-950/80 hover:bg-ink-950/5">Services</a>
+        <a href="approach.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-ink-950/80 hover:bg-ink-950/5">Our Approach</a>
+        <a href="contact.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-brand-700">Contact</a>
+        <a href="#form" class="mt-2 block rounded-lg bg-brand-600 px-6 py-3 text-center text-sm font-semibold text-white">Book a Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ PAGE BANNER ============ -->
+  <section class="relative">
+    <div class="absolute inset-0 overflow-hidden">
+      <img src="../assets/img/businesswoman.jpg" alt="" class="absolute left-0 -top-[15%] h-[130%] w-full object-cover object-[50%_25%]" data-speed="0.12" />
+      <div class="absolute inset-0 bg-gradient-to-r from-ink-950/95 via-ink-950/80 to-ink-950/50"></div>
+    </div>
+    <div class="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-28">
+      <p class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] text-brand-400">
+        <span class="h-px w-10 bg-brand-500"></span>
+        Contact Us
+      </p>
+      <h1 class="font-display mt-5 max-w-3xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
+        Let's start with a conversation
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
+        Book a no-obligation consultation. We'll listen to your goals and show you exactly how we would manage your capital.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+    <div class="grid gap-14 lg:grid-cols-12">
+      <!-- Details -->
+      <div class="lg:col-span-5">
+        <div class="reveal space-y-5">
+          <div class="flex items-center gap-4 rounded-xl border border-ink-950/10 bg-white p-5 shadow-sm">
+            <div class="flex h-12 w-12 flex-none items-center justify-center rounded-lg bg-brand-500/10 text-brand-600">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.9 5.3a2 2 0 002.2 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <div><p class="text-xs font-semibold uppercase tracking-[0.15em] text-ink-950/50">Email</p><a href="mailto:info@rohi-capital.com" class="font-semibold text-ink-950 hover:text-brand-700">info@rohi-capital.com</a></div>
+          </div>
+          <div class="flex items-center gap-4 rounded-xl border border-ink-950/10 bg-white p-5 shadow-sm">
+            <div class="flex h-12 w-12 flex-none items-center justify-center rounded-lg bg-brand-500/10 text-brand-600">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.2a1 1 0 01.95.68l1.5 4.5a1 1 0 01-.5 1.21l-1.9.95a12.05 12.05 0 006.41 6.41l.95-1.9a1 1 0 011.21-.5l4.5 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z"/></svg>
+            </div>
+            <div><p class="text-xs font-semibold uppercase tracking-[0.15em] text-ink-950/50">Telephone</p><p class="font-semibold text-ink-950">090 XXXX XXXXX</p></div>
+          </div>
+          <div class="flex items-center gap-4 rounded-xl border border-ink-950/10 bg-white p-5 shadow-sm">
+            <div class="flex h-12 w-12 flex-none items-center justify-center rounded-lg bg-brand-500/10 text-brand-600">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 010 18M12 3a15 15 0 000 18M12 3a9 9 0 100 18 9 9 0 000-18z"/></svg>
+            </div>
+            <div><p class="text-xs font-semibold uppercase tracking-[0.15em] text-ink-950/50">Website</p><a href="https://www.rohi-capital.com" class="font-semibold text-ink-950 hover:text-brand-700">www.rohi-capital.com</a></div>
+          </div>
+          <div class="flex items-center gap-4 rounded-xl border border-ink-950/10 bg-white p-5 shadow-sm">
+            <div class="flex h-12 w-12 flex-none items-center justify-center rounded-lg bg-brand-500/10 text-brand-600">
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 013.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+            </div>
+            <div><p class="text-xs font-semibold uppercase tracking-[0.15em] text-ink-950/50">LinkedIn</p><a href="https://www.linkedin.com/in/rohi-capital" target="_blank" rel="noopener" class="font-semibold text-ink-950 hover:text-brand-700">linkedin.com/in/rohi-capital</a></div>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-1 mt-8 overflow-hidden rounded-xl">
+          <img src="../assets/img/businessman.jpg" alt="A Rohi Capital advisor" class="h-64 w-full object-cover" />
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div id="form" class="lg:col-span-7">
+        <div class="reveal reveal-delay-1 rounded-2xl border border-ink-950/10 bg-white p-8 shadow-lg lg:p-10">
+          <h2 class="font-display text-2xl font-bold">Request a consultation</h2>
+          <p class="mt-2 text-sm text-ink-600">Fill in the form and we will be in touch within one business day.</p>
+          <form id="contact-form" class="mt-8 space-y-5" novalidate>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label for="name" class="mb-1.5 block text-sm font-semibold">Full name</label>
+                <input id="name" name="name" type="text" required placeholder="Jane Doe"
+                       class="w-full rounded-lg border border-ink-950/15 bg-slate-50 px-4 py-3 text-sm outline-none transition placeholder:text-ink-950/30 focus:border-brand-600 focus:bg-white focus:ring-1 focus:ring-brand-600" />
+              </div>
+              <div>
+                <label for="email" class="mb-1.5 block text-sm font-semibold">Email</label>
+                <input id="email" name="email" type="email" required placeholder="jane@email.com"
+                       class="w-full rounded-lg border border-ink-950/15 bg-slate-50 px-4 py-3 text-sm outline-none transition placeholder:text-ink-950/30 focus:border-brand-600 focus:bg-white focus:ring-1 focus:ring-brand-600" />
+              </div>
+            </div>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label for="phone" class="mb-1.5 block text-sm font-semibold">Phone <span class="font-normal text-ink-950/40">(optional)</span></label>
+                <input id="phone" name="phone" type="tel" placeholder="0801 234 5678"
+                       class="w-full rounded-lg border border-ink-950/15 bg-slate-50 px-4 py-3 text-sm outline-none transition placeholder:text-ink-950/30 focus:border-brand-600 focus:bg-white focus:ring-1 focus:ring-brand-600" />
+              </div>
+              <div>
+                <label for="investor-type" class="mb-1.5 block text-sm font-semibold">I am a…</label>
+                <select id="investor-type" name="investor-type"
+                        class="w-full rounded-lg border border-ink-950/15 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-brand-600 focus:bg-white focus:ring-1 focus:ring-brand-600">
+                  <option>Private Individual</option>
+                  <option>Corporate Organisation</option>
+                  <option>Institutional Investor</option>
+                  <option>Diaspora Investor</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label for="interest" class="mb-1.5 block text-sm font-semibold">I'm interested in</label>
+              <select id="interest" name="interest"
+                      class="w-full rounded-lg border border-ink-950/15 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-brand-600 focus:bg-white focus:ring-1 focus:ring-brand-600">
+                <option>Portfolio Management</option>
+                <option>Fixed Income Investments</option>
+                <option>Wealth Management</option>
+                <option>Collective Investment Schemes</option>
+                <option>Treasury &amp; Liquidity Management</option>
+                <option>Investment Advisory</option>
+              </select>
+            </div>
+            <div>
+              <label for="message" class="mb-1.5 block text-sm font-semibold">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tell us a little about your goals…"
+                        class="w-full resize-none rounded-lg border border-ink-950/15 bg-slate-50 px-4 py-3 text-sm outline-none transition placeholder:text-ink-950/30 focus:border-brand-600 focus:bg-white focus:ring-1 focus:ring-brand-600"></textarea>
+            </div>
+            <button type="submit" class="w-full rounded-lg bg-brand-600 py-4 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:bg-brand-700">
+              Send Request
+            </button>
+            <p id="form-success" class="hidden text-center text-sm font-medium text-brand-700">Thank you — we will be in touch within one business day.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-ink-950">
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+      <div class="grid gap-12 lg:grid-cols-4">
+        <div class="lg:col-span-2">
+          <a href="index.html"><img src="../assets/logo-full-white.svg" alt="Rohi Capital Limited" class="h-11 w-auto" /></a>
+          <p class="mt-5 max-w-sm text-sm leading-relaxed text-white/50">
+            An investment and asset management company providing innovative, disciplined, and client-focused investment solutions — built on integrity, prudent stewardship, and long-term thinking.
+          </p>
+          <a href="https://www.linkedin.com/in/rohi-capital" target="_blank" rel="noopener" class="mt-6 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/60 transition hover:border-brand-500/60 hover:text-brand-400" aria-label="LinkedIn">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 013.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          </a>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-white/40">Company</p>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li><a href="about.html" class="text-white/60 transition hover:text-brand-400">About Us</a></li>
+            <li><a href="approach.html" class="text-white/60 transition hover:text-brand-400">Our Approach</a></li>
+            <li><a href="about.html#governance" class="text-white/60 transition hover:text-brand-400">Governance &amp; Compliance</a></li>
+            <li><a href="contact.html" class="text-white/60 transition hover:text-brand-400">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-white/40">Services</p>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li><a href="services.html#portfolio-management" class="text-white/60 transition hover:text-brand-400">Portfolio Management</a></li>
+            <li><a href="services.html#fixed-income" class="text-white/60 transition hover:text-brand-400">Fixed Income Investments</a></li>
+            <li><a href="services.html#wealth-management" class="text-white/60 transition hover:text-brand-400">Wealth Management</a></li>
+            <li><a href="services.html#collective-schemes" class="text-white/60 transition hover:text-brand-400">Collective Investment Schemes</a></li>
+            <li><a href="services.html#treasury" class="text-white/60 transition hover:text-brand-400">Treasury &amp; Liquidity</a></li>
+            <li><a href="services.html#advisory" class="text-white/60 transition hover:text-brand-400">Investment Advisory</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-14 border-t border-white/5 pt-8">
+        <p class="text-xs leading-relaxed text-white/35">
+          Investment involves risk, including the possible loss of principal. Past performance is not indicative of future results. Services are offered subject to obtaining and maintaining all required regulatory approvals. This website is for informational purposes only and does not constitute an offer or solicitation to buy or sell any security.
+        </p>
+        <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
+          <p class="text-xs text-white/40">© 2026 Rohi Capital Limited. All rights reserved.</p>
+          <div class="flex gap-6 text-xs">
+            <a href="mailto:info@rohi-capital.com" class="text-white/40 transition hover:text-brand-400">info@rohi-capital.com</a>
+            <a href="https://www.rohi-capital.com" class="text-white/40 transition hover:text-brand-400">www.rohi-capital.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+  <script src="../assets/motion.js"></script>
+  <script src="../assets/parallax.js"></script>
+</body>
+</html>

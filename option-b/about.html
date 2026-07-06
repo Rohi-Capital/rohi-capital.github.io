@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — Rohi Capital Limited</title>
+  <meta name="description" content="Rohi Capital Limited is founded on the belief that wealth creation should be guided by integrity, prudent stewardship, and long-term thinking." />
+  <link rel="icon" type="image/png" href="../assets/logo-mark.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50:'#e6fdf3', 100:'#c3fae2', 300:'#4ff0a9', 400:'#21e893', 500:'#02df82', 600:'#02b96c', 700:'#059257' },
+            ink:   { 950:'#030f0f', 900:'#081714', 800:'#0d2420', 700:'#153730', 600:'#2b544a' },
+            paper: '#faf9f5',
+          },
+          fontFamily: { display:['Fraunces','serif'], body:['Inter','sans-serif'] },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { font-family:'Inter',sans-serif; }
+    .font-display { font-family:'Fraunces',serif; }
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity .8s ease, transform .8s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-delay-1 { transition-delay:.12s; } .reveal-delay-2 { transition-delay:.24s; } .reveal-delay-3 { transition-delay:.36s; }
+    .link-underline { position:relative; }
+    .link-underline::after { content:''; position:absolute; left:0; bottom:-3px; height:1.5px; width:0; background:#02b96c; transition:width .3s ease; }
+    .link-underline:hover::after, .link-underline.active::after { width:100%; }
+    section[id] { scroll-margin-top: 96px; }
+  </style>
+</head>
+
+<body class="bg-paper text-ink-950 antialiased">
+
+  <!-- ============ HEADER ============ -->
+  <header class="sticky top-0 z-50 border-b border-ink-950/10 bg-paper/90 backdrop-blur-md">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+      <a href="index.html"><img src="../assets/logo-full.svg" alt="Rohi Capital Limited" class="h-9 w-auto" /></a>
+      <div class="hidden items-center gap-9 lg:flex">
+        <a href="index.html" class="link-underline text-sm font-medium text-ink-950/70 hover:text-ink-950">Home</a>
+        <a href="about.html" class="link-underline active text-sm font-semibold text-ink-950">About Us</a>
+        <a href="services.html" class="link-underline text-sm font-medium text-ink-950/70 hover:text-ink-950">Services</a>
+        <a href="approach.html" class="link-underline text-sm font-medium text-ink-950/70 hover:text-ink-950">Our Approach</a>
+        <a href="contact.html" class="link-underline text-sm font-medium text-ink-950/70 hover:text-ink-950">Contact</a>
+        <a href="contact.html" class="rounded-full bg-ink-950 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-600">Book a Consultation</a>
+      </div>
+      <button id="menu-btn" class="lg:hidden text-ink-950" aria-label="Open menu" aria-expanded="false">
+        <svg id="icon-open" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg id="icon-close" class="hidden h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="hidden border-t border-ink-950/10 bg-paper lg:hidden">
+      <div class="space-y-1 px-6 py-4">
+        <a href="index.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-ink-950/80 hover:bg-ink-950/5">Home</a>
+        <a href="about.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-brand-700">About Us</a>
+        <a href="services.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-ink-950/80 hover:bg-ink-950/5">Services</a>
+        <a href="approach.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-ink-950/80 hover:bg-ink-950/5">Our Approach</a>
+        <a href="contact.html" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-ink-950/80 hover:bg-ink-950/5">Contact</a>
+        <a href="contact.html" class="mt-2 block rounded-full bg-ink-950 px-6 py-2.5 text-center text-sm font-semibold text-white">Book a Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ PAGE HERO ============ -->
+  <section class="mx-auto max-w-7xl px-6 pt-16 pb-14 lg:px-10 lg:pt-24 lg:pb-20">
+    <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-700">About Us</p>
+    <h1 class="font-display mt-6 max-w-4xl text-5xl font-medium leading-[1.08] tracking-tight sm:text-6xl">
+      An institution built for <em class="font-light text-brand-600">generations</em> of sustainable value creation.
+    </h1>
+  </section>
+
+  <!-- ============ OVERVIEW ============ -->
+  <section class="border-t border-ink-950/10">
+    <div class="mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-12 lg:px-10 lg:py-24">
+      <div class="reveal lg:col-span-4">
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-ink-950/50">Company Overview</p>
+        <div class="mt-8 hidden lg:block">
+          <img src="../assets/logo-mark.png" alt="" class="w-40 opacity-90" />
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1 space-y-6 text-lg leading-relaxed text-ink-600 lg:col-span-8">
+        <p class="font-display text-2xl font-light leading-relaxed text-ink-950">
+          Rohi Capital Limited is an investment and asset management company established to provide innovative, disciplined, and client-focused investment solutions to individuals, businesses, institutions, and sophisticated investors.
+        </p>
+        <p>
+          Rohi Capital is founded on the belief that wealth creation should be guided by integrity, prudent stewardship, and long-term thinking. We exist to help our clients navigate complex financial markets, preserve capital, unlock growth opportunities, and build lasting legacies.
+        </p>
+        <p>
+          Globally there are significant investment opportunities. However, these opportunities require sound judgment, disciplined execution, and trusted partnerships. Rohi Capital combines local market expertise with global investment principles to deliver investment solutions that align with our clients' aspirations and risk profiles.
+        </p>
+        <p class="font-semibold text-ink-950">
+          We are building an institution designed not merely for today's opportunities, but for generations of sustainable value creation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VISION / MISSION / PURPOSE ============ -->
+  <section class="border-t border-ink-950/10 bg-white">
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+      <div class="divide-y divide-ink-950/10">
+        <div class="reveal grid gap-4 py-10 lg:grid-cols-12 lg:items-start">
+          <p class="font-display text-sm text-brand-700 lg:col-span-2">Our Vision</p>
+          <p class="font-display text-2xl font-light leading-relaxed lg:col-span-10 lg:text-3xl">
+            To be one of Africa's most trusted and respected investment management institutions, renowned for integrity, innovation, disciplined investing, and exceptional client outcomes.
+          </p>
+        </div>
+        <div class="reveal grid gap-4 py-10 lg:grid-cols-12 lg:items-start">
+          <p class="font-display text-sm text-brand-700 lg:col-span-2">Our Mission</p>
+          <p class="font-display text-2xl font-light leading-relaxed lg:col-span-10 lg:text-3xl">
+            To empower individuals and institutions to build, preserve, and transfer wealth through professional investment management, sound governance, and enduring partnerships.
+          </p>
+        </div>
+        <div class="reveal grid gap-4 py-10 lg:grid-cols-12 lg:items-start">
+          <p class="font-display text-sm text-brand-700 lg:col-span-2">Our Purpose</p>
+          <p class="font-display text-2xl font-light leading-relaxed lg:col-span-10 lg:text-3xl">
+            To transform savings into prosperity and investments into lasting legacies.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BRAND PROMISE (GREEN) ============ -->
+  <section class="relative overflow-hidden bg-brand-500">
+    <img src="../assets/logo-mark-white.png" alt="" class="pointer-events-none absolute -right-16 -bottom-20 w-[24rem] opacity-15" />
+    <div class="relative mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+      <div class="reveal max-w-2xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-ink-950/60">Our Brand Promise</p>
+        <h2 class="font-display mt-4 text-4xl font-medium leading-tight tracking-tight text-ink-950 sm:text-5xl">Your confidence is our most valuable asset.</h2>
+        <p class="mt-5 text-lg leading-relaxed text-ink-950/70">Every investment entrusted to us represents dreams, aspirations, responsibilities, and futures. We therefore commit to:</p>
+      </div>
+      <ol class="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+        <li class="reveal border-t-2 border-ink-950/30 pt-4"><p class="font-display text-sm text-ink-950/50">01</p><p class="mt-2 font-semibold text-ink-950">Protecting our clients' interests through disciplined risk management</p></li>
+        <li class="reveal reveal-delay-1 border-t-2 border-ink-950/30 pt-4"><p class="font-display text-sm text-ink-950/50">02</p><p class="mt-2 font-semibold text-ink-950">Pursuing sustainable and competitive returns</p></li>
+        <li class="reveal reveal-delay-2 border-t-2 border-ink-950/30 pt-4"><p class="font-display text-sm text-ink-950/50">03</p><p class="mt-2 font-semibold text-ink-950">Operating with transparency and accountability</p></li>
+        <li class="reveal border-t-2 border-ink-950/30 pt-4"><p class="font-display text-sm text-ink-950/50">04</p><p class="mt-2 font-semibold text-ink-950">Providing exceptional service and professional excellence</p></li>
+        <li class="reveal reveal-delay-1 border-t-2 border-ink-950/30 pt-4"><p class="font-display text-sm text-ink-950/50">05</p><p class="mt-2 font-semibold text-ink-950">Building relationships founded on trust</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ WHY ROHI ============ -->
+  <section class="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+    <div class="reveal max-w-2xl">
+      <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-700">Why Rohi Capital</p>
+      <h2 class="font-display mt-4 text-4xl font-medium leading-tight tracking-tight sm:text-5xl">What sets us apart</h2>
+    </div>
+    <div class="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="reveal border-t border-ink-950/15 pt-5"><h3 class="font-display text-xl font-medium">Trusted Stewardship</h3><p class="mt-2.5 text-sm leading-relaxed text-ink-600">We recognize the responsibility that accompanies managing our clients' wealth.</p></div>
+      <div class="reveal reveal-delay-1 border-t border-ink-950/15 pt-5"><h3 class="font-display text-xl font-medium">Disciplined Investing</h3><p class="mt-2.5 text-sm leading-relaxed text-ink-600">Our decisions are guided by research, process, and prudence.</p></div>
+      <div class="reveal reveal-delay-2 border-t border-ink-950/15 pt-5"><h3 class="font-display text-xl font-medium">Client-Centric Solutions</h3><p class="mt-2.5 text-sm leading-relaxed text-ink-600">Every strategy begins with understanding the client.</p></div>
+      <div class="reveal border-t border-ink-950/15 pt-5"><h3 class="font-display text-xl font-medium">Local Insight</h3><p class="mt-2.5 text-sm leading-relaxed text-ink-600">Deep appreciation of the country's economic environment and market dynamics.</p></div>
+      <div class="reveal reveal-delay-1 border-t border-ink-950/15 pt-5"><h3 class="font-display text-xl font-medium">Institutional Standards</h3><p class="mt-2.5 text-sm leading-relaxed text-ink-600">Governance structures and operating principles designed to support sustainable growth.</p></div>
+      <div class="reveal reveal-delay-2 border-t border-ink-950/15 pt-5"><h3 class="font-display text-xl font-medium">Long-Term Partnerships</h3><p class="mt-2.5 text-sm leading-relaxed text-ink-600">We measure success by the prosperity and confidence of those we serve.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ GOVERNANCE & COMPLIANCE ============ -->
+  <section id="governance" class="border-t border-ink-950/10 bg-white">
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+      <div class="reveal max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-700">Governance &amp; Compliance</p>
+        <h2 class="font-display mt-4 text-4xl font-medium leading-tight tracking-tight sm:text-5xl">Strong institutions are built on trust, accountability, and oversight.</h2>
+      </div>
+      <div class="mt-14 grid gap-14 lg:grid-cols-3">
+        <div class="reveal">
+          <h3 class="font-display text-xl font-medium">Governance &amp; Risk</h3>
+          <p class="mt-3 text-sm leading-relaxed text-ink-600">Robust standards supported by clearly defined responsibilities, internal controls, and independent oversight. Risk management is integrated into every aspect of our operations.</p>
+          <ul class="mt-5 space-y-2 text-sm text-ink-600">
+            <li class="flex gap-2.5"><span class="text-brand-600">—</span>Ethical leadership</li>
+            <li class="flex gap-2.5"><span class="text-brand-600">—</span>Segregation of duties</li>
+            <li class="flex gap-2.5"><span class="text-brand-600">—</span>Investment oversight</li>
+            <li class="flex gap-2.5"><span class="text-brand-600">—</span>Independent control functions</li>
+            <li class="flex gap-2.5"><span class="text-brand-600">—</span>Compliance monitoring</li>
+            <li class="flex gap-2.5"><span class="text-brand-600">—</span>Periodic internal reviews</li>
+            <li class="flex gap-2.5"><span class="text-brand-600">—</span>Transparent reporting</li>
+          </ul>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <h3 class="font-display text-xl font-medium">Compliance Commitment</h3>
+          <p class="mt-3 text-sm leading-relaxed text-ink-600">Full compliance with applicable laws, regulations, and industry best practices. Integrity is not merely a policy — it defines who we are.</p>
+          <ul class="mt-5 space-y-2 text-sm text-ink-600">
+            <li class="flex gap-2.5"><span class="text-brand-600">—</span>Know Your Customer (KYC) procedures</li>
+            <li class="flex gap-2.5"><span class="text-brand-600">—</span>AML &amp; Counter-Terrorism Financing controls</li>
+            <li class="flex gap-2.5"><span class="text-brand-600">—</span>Client confidentiality standards</li>
+            <li class="flex gap-2.5"><span class="text-brand-600">—</span>Data protection practices</li>
+            <li class="flex gap-2.5"><span class="text-brand-600">—</span>Regulatory reporting obligations</li>
+            <li class="flex gap-2.5"><span class="text-brand-600">—</span>Ongoing staff training and awareness</li>
+          </ul>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <h3 class="font-display text-xl font-medium">Technology &amp; Innovation</h3>
+          <p class="mt-3 text-sm leading-relaxed text-ink-600">The future of investment management requires agility, efficiency, and technological capability. We leverage modern technology to enhance:</p>
+          <ul class="mt-5 space-y-2 text-sm text-ink-600">
+            <li class="flex gap-2.5"><span class="text-brand-600">—</span>Portfolio monitoring</li>
+            <li class="flex gap-2.5"><span class="text-brand-600">—</span>Investment reporting</li>
+            <li class="flex gap-2.5"><span class="text-brand-600">—</span>Client experience</li>
+            <li class="flex gap-2.5"><span class="text-brand-600">—</span>Operational efficiency</li>
+            <li class="flex gap-2.5"><span class="text-brand-600">—</span>Data security</li>
+            <li class="flex gap-2.5"><span class="text-brand-600">—</span>Decision support &amp; analytics</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ASPIRATION / CTA ============ -->
+  <section class="bg-ink-950">
+    <div class="mx-auto max-w-4xl px-6 py-20 text-center lg:py-28">
+      <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-400">Our Aspiration</p>
+      <p class="reveal font-display mt-8 text-2xl font-light italic leading-relaxed text-white sm:text-3xl">
+        "We seek to build an enduring institution — one that earns trust through consistency, inspires confidence through integrity, and contributes meaningfully to economic development."
+      </p>
+      <p class="mt-6 text-lg text-white/60">To protect what matters most, grow what is possible, and help our clients shape a more secure financial future.</p>
+      <a href="contact.html" class="mt-10 inline-block rounded-full bg-brand-500 px-8 py-4 text-sm font-semibold text-ink-950 transition hover:bg-brand-400">Partner With Us</a>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="border-t border-ink-950/10 bg-paper">
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+      <div class="grid gap-12 lg:grid-cols-4">
+        <div class="lg:col-span-2">
+          <a href="index.html"><img src="../assets/logo-full.svg" alt="Rohi Capital Limited" class="h-10 w-auto" /></a>
+          <p class="mt-5 max-w-sm text-sm leading-relaxed text-ink-600">
+            An investment and asset management company providing innovative, disciplined, and client-focused investment solutions — built on integrity, prudent stewardship, and long-term thinking.
+          </p>
+          <a href="https://www.linkedin.com/in/rohi-capital" target="_blank" rel="noopener" class="mt-6 inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink-950/15 text-ink-950/60 transition hover:border-brand-600 hover:text-brand-700" aria-label="LinkedIn">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 013.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          </a>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-ink-950/50">Company</p>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li><a href="about.html" class="link-underline text-ink-600 hover:text-ink-950">About Us</a></li>
+            <li><a href="approach.html" class="link-underline text-ink-600 hover:text-ink-950">Our Approach</a></li>
+            <li><a href="about.html#governance" class="link-underline text-ink-600 hover:text-ink-950">Governance &amp; Compliance</a></li>
+            <li><a href="contact.html" class="link-underline text-ink-600 hover:text-ink-950">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-ink-950/50">Services</p>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li><a href="services.html#portfolio-management" class="link-underline text-ink-600 hover:text-ink-950">Portfolio Management</a></li>
+            <li><a href="services.html#fixed-income" class="link-underline text-ink-600 hover:text-ink-950">Fixed Income Investments</a></li>
+            <li><a href="services.html#wealth-management" class="link-underline text-ink-600 hover:text-ink-950">Wealth Management</a></li>
+            <li><a href="services.html#collective-schemes" class="link-underline text-ink-600 hover:text-ink-950">Collective Investment Schemes</a></li>
+            <li><a href="services.html#treasury" class="link-underline text-ink-600 hover:text-ink-950">Treasury &amp; Liquidity</a></li>
+            <li><a href="services.html#advisory" class="link-underline text-ink-600 hover:text-ink-950">Investment Advisory</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-14 border-t border-ink-950/10 pt-8">
+        <p class="text-xs leading-relaxed text-ink-950/40">
+          Investment involves risk, including the possible loss of principal. Past performance is not indicative of future results. Services are offered subject to obtaining and maintaining all required regulatory approvals. This website is for informational purposes only and does not constitute an offer or solicitation to buy or sell any security.
+        </p>
+        <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
+          <p class="text-xs text-ink-950/50">© 2026 Rohi Capital Limited. All rights reserved.</p>
+          <div class="flex gap-6 text-xs">
+            <a href="mailto:info@rohi-capital.com" class="text-ink-950/50 transition hover:text-brand-700">info@rohi-capital.com</a>
+            <a href="https://www.rohi-capital.com" class="text-ink-950/50 transition hover:text-brand-700">www.rohi-capital.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+</body>
+</html>
